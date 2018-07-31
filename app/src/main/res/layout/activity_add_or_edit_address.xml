@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/scrollView2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/input_Name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:layout_marginEnd="26dp"
+
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="15dp"
+            android:ems="10"
+            android:hint="Name"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/input_Address1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:layout_marginEnd="26dp"
+
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="15dp"
+            android:ems="10"
+            android:hint="Address Line 1"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/input_Address2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:layout_marginEnd="26dp"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="15dp"
+            android:ems="10"
+            android:hint="Address Line 2"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/input_Landmark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:layout_marginEnd="26dp"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="15dp"
+            android:ems="10"
+            android:hint="Landmark"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/input_City"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:layout_marginEnd="26dp"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="15dp"
+            android:ems="10"
+            android:hint="City"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/input_State"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:layout_marginEnd="26dp"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="15dp"
+            android:ems="10"
+            android:hint="State"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/input_Zipcode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:layout_marginEnd="26dp"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="15dp"
+            android:ems="10"
+            android:hint="Pincode"
+            android:inputType="number" />
+
+        <CheckBox
+            android:id="@+id/checkBox_Make_Default_Address"
+            android:layout_width="183dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:layout_marginEnd="26dp"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="15dp"
+            android:text="Make this my default address"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:layout_width="150dp"
+            android:layout_height="45dp"
+            android:layout_gravity="end"
+            android:layout_marginBottom="15dp"
+            android:layout_marginEnd="26dp"
+            android:adjustViewBounds="true"
+            android:background="#ff9800"
+            android:onClick="sendData"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_arrow_left" />
+
+    </LinearLayout>
+
+</ScrollView>
+
