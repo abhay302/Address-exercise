@@ -1,17 +1,13 @@
 package com.example.abhay.address
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.widget.Toast
-import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 /**
  * This activty will display a list of addresses
@@ -86,9 +82,14 @@ class BaseActivity : AppCompatActivity(), DisplayAddressFragment.EmptyListCallba
      * It is a callback method that the DisplayAddressFragment will call if on deletion of an element the list becomes empty
      */
     override fun notifyListIsEmpty() {
-        val transaction = supportFragmentManager.beginTransaction()
+        /*val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.address_display_fragment_container, BlankAddressFragment())
-        transaction.commit()
+        transaction.commit()*/
+
+        with(supportFragmentManager.beginTransaction()) {
+            replace(R.id.address_display_fragment_container, BlankAddressFragment())
+            commit()
+        }
     }
 
 }

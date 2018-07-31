@@ -9,13 +9,9 @@ import android.view.View
 import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.Toast
-import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 /**
  * This class is used to add and update a particular address record.
@@ -38,12 +34,12 @@ class AddOrEditAddressActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_or_edit_address)
 
-        if (intent.extras != null) {
+        if (intent.extras != null) {    // whether the intended query is an update request or not
             isUpdateQuery = true
             inializeForm()
             title = "Update Address"
         } else {
-            initializeFormTestingPurpose()
+            initializeFormTestingPurpose()  // for testing purpose
             title = "Add Address"
         }
         //Toast.makeText(this, getDefaultAddress().toString(), Toast.LENGTH_LONG).show()
@@ -81,7 +77,6 @@ class AddOrEditAddressActivity : AppCompatActivity() {
         findViewById<EditText>(R.id.input_City).setText("In my city")
         findViewById<EditText>(R.id.input_State).setText("1400")
         findViewById<EditText>(R.id.input_Zipcode).setText("284128")
-
     }
 
     /**

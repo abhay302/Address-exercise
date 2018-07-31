@@ -16,6 +16,4 @@ class EmptyFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_empty, container, false)
     }
-
-
 }

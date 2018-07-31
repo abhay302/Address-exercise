@@ -21,15 +21,22 @@ import retrofit2.Response
 
 /**
  * This fragment is used to display a list of addresses.
+ * Implements interface containing a callback method, which is called when a menu icon in a particular entry is clicked in the recycler view
+ * indicating the fragment to open a popup menu.
  */
 class DisplayAddressFragment : Fragment(), AddressAdapter.ShowPopupCallback {
 
+    /**
+     * This interface will be implemented by the hosting activity
+     * Provides a callback method which tells the activity to change the fragment since, the list is now empty after deletion of the last element.
+     */
     interface EmptyListCallback {
         fun notifyListIsEmpty()
     }
 
     lateinit var list: MutableList<Address>
     lateinit var recyclerView: RecyclerView
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -43,10 +50,10 @@ class DisplayAddressFragment : Fragment(), AddressAdapter.ShowPopupCallback {
     }
 
     /**
-     * The function will put the entries in the recycler view
+     * The function will put the entries in the recycler view using the array of address received from the hosting activity.
      */
     private fun populateList() {
-        list = (arguments?.get("addresses") as Array<Address>).asList().toMutableList()
+        list = (arguments?.get("addresses") as Array<Address>).toMutableList()
         Toast.makeText(activity, list.size.toString(), Toast.LENGTH_SHORT).show()
 
         recyclerView = activity!!.findViewById(R.id.display_address_recycler_view)
@@ -54,7 +61,6 @@ class DisplayAddressFragment : Fragment(), AddressAdapter.ShowPopupCallback {
         recyclerView.adapter = AddressAdapter(list, this)
 
         recyclerView.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))  // add divider
-
     }
 
     /**
@@ -86,7 +92,7 @@ class DisplayAddressFragment : Fragment(), AddressAdapter.ShowPopupCallback {
 
     /**
      * This function is used to update a particular address
-     * It will send the requested object to be deleted to the AddOrEditAddressActivity which will handle the rest of the work
+     * It will send the requested object to be updated to the AddOrEditAddressActivity which will handle the rest of the work
      */
     private fun updateAddress(address: Address) {
         val bundle = Bundle().apply { putSerializable("address", address) }
@@ -139,7 +145,6 @@ class DisplayAddressFragment : Fragment(), AddressAdapter.ShowPopupCallback {
                     sendDeleteRequest(address.id!!, position)
 
                     dialogInterface.cancel()
-
 
                 }.setNegativeButton("No") { dialogInterface, i ->
                     dialogInterface.cancel()
