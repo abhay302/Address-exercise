@@ -39,7 +39,7 @@ class AddOrEditAddressActivity : AppCompatActivity() {
             inializeForm()
             title = "Update Address"
         } else {
-            initializeFormTestingPurpose()  // for testing purpose
+            //initializeFormTestingPurpose()  // for testing purpose
             title = "Add Address"
         }
         //Toast.makeText(this, getDefaultAddress().toString(), Toast.LENGTH_LONG).show()
