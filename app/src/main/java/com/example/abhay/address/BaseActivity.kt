@@ -11,7 +11,7 @@ import retrofit2.Response
 
 /**
  * This activty will display a list of addresses
- * It will display two types of fragments:
+ * It can display two types of fragments:
  * 1. BlankAddressFragment: If no address is present
  * 2. DisplayAddressFragment: Will display a list of addresses in this fragment
  */
@@ -22,17 +22,22 @@ class BaseActivity : AppCompatActivity(), DisplayAddressFragment.EmptyListCallba
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_base)
         fetchData()
+        //Toast.makeText(this, "Inside onCreate", Toast.LENGTH_SHORT).show()
     }
 
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
-        fetchData()
+        //fetchData()
+        if (intent?.extras?.get("address") != null) {
+            val address = intent.extras?.get("address") as Address
+            val isChecked = intent.extras?.get("isChecked") as Boolean
+            //Toast.makeText(this, address.toString(), Toast.LENGTH_SHORT).show()
+
+            val fragment = supportFragmentManager.findFragmentByTag("display_address_fragment") as DisplayAddressFragment
+            fragment.updateList(address, isChecked)
+        }
     }
 
-    /*override fun onStart() {
-        super.onStart()
-        //fetchData()
-    }*/
 
     /**
      * This function fetches the addresses from the server using Retrofit
@@ -67,11 +72,11 @@ class BaseActivity : AppCompatActivity(), DisplayAddressFragment.EmptyListCallba
         val transaction = supportFragmentManager.beginTransaction()
 
         if (list?.isEmpty() == true) {
-            transaction.replace(R.id.address_display_fragment_container, BlankAddressFragment())
+            transaction.replace(R.id.address_display_fragment_container, BlankAddressFragment(), "blank_address_fragment")
         } else {
             val bundle = Bundle().apply { putSerializable("addresses", list) }
             val displayAddressFragment = DisplayAddressFragment().apply { arguments = bundle }
-            transaction.replace(R.id.address_display_fragment_container, displayAddressFragment)
+            transaction.replace(R.id.address_display_fragment_container, displayAddressFragment, "display_address_fragment")
         }
 
         //  transaction.addToBackStack(null)

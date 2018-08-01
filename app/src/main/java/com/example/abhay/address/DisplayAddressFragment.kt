@@ -43,10 +43,36 @@ class DisplayAddressFragment : Fragment(), AddressAdapter.ShowPopupCallback {
         return inflater.inflate(R.layout.fragment_display_address, container, false)
     }
 
-    override fun onResume() {
-        super.onResume()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         addAddressButtonClickListener()
         populateList()
+    }
+
+    /**
+     * Will update the address list when an item is added or updated
+     */
+    fun updateList(address: Address, isChecked: Boolean) {
+        val pos = list.indexOfFirst { it.id == address.id }
+        if (isChecked) {
+            val posOfCurrentDefaultAddress = list.indexOfFirst { it.id == getDefaultAddress(context!!) }
+            Log.d("posCurrentDefault", posOfCurrentDefaultAddress.toString())
+            if (posOfCurrentDefaultAddress >= 0) {
+                recyclerView.adapter.notifyItemChanged(posOfCurrentDefaultAddress)
+            }
+            setDefaultAddress(context!!, address.id!!)
+            Log.d("New default address is ", getDefaultAddress(context!!).toString())
+        } else {
+            Log.d("Old default address is ", getDefaultAddress(context!!).toString())
+        }
+        Log.d("newAddressPosition", pos.toString())
+        if (pos == -1) {    // It means that address is not present in the list i.e. create query
+            list.add(0, address)
+            recyclerView.adapter.notifyItemInserted(0)
+        } else {            // It means that the address is already present in the list i.e. update query
+            list[pos] = address
+            recyclerView.adapter.notifyItemChanged(pos)
+        }
     }
 
     /**
@@ -54,7 +80,7 @@ class DisplayAddressFragment : Fragment(), AddressAdapter.ShowPopupCallback {
      */
     private fun populateList() {
         list = (arguments?.get("addresses") as Array<Address>).toMutableList()
-        Toast.makeText(activity, list.size.toString(), Toast.LENGTH_SHORT).show()
+        //Toast.makeText(activity, list.size.toString(), Toast.LENGTH_SHORT).show()
 
         recyclerView = activity!!.findViewById(R.id.display_address_recycler_view)
         recyclerView.layoutManager = LinearLayoutManager(activity)
@@ -114,13 +140,14 @@ class DisplayAddressFragment : Fragment(), AddressAdapter.ShowPopupCallback {
 
                 override fun onResponse(call: Call<DeleteActionReply>?, response: Response<DeleteActionReply>?) {
                     if (response?.code() == 200) {
-                        Toast.makeText(activity, response.body()?.message
-                                ?: "Some acknowledgement message", Toast.LENGTH_LONG).show()
+                        /*Toast.makeText(activity, response.body()?.message
+                                ?: "Some acknowledgement message", Toast.LENGTH_LONG).show()*/
                         list.removeAt(position)
                         if (list.isEmpty()) {
                             (activity as BaseActivity).notifyListIsEmpty()   // Tells the hosting activity to change the fragment since, the list is now empty.
                         }
-                        recyclerView.adapter?.notifyDataSetChanged()
+                        //recyclerView.adapter?.notifyDataSetChanged()
+                        recyclerView.adapter.notifyItemRemoved(position)
                     } else {
                         Toast.makeText(activity, response?.body()?.errors
                                 ?: "Problem in deletion", Toast.LENGTH_LONG).show()
@@ -164,12 +191,34 @@ class DisplayAddressFragment : Fragment(), AddressAdapter.ShowPopupCallback {
 }
 
 /**
+ * The will return the id of the default address (if present) else, it returns a very small number
+ */
+fun getDefaultAddress(context: Context): Int {
+    val sharedPreferences = context.getSharedPreferences("defaultAddress", Context.MODE_PRIVATE)
+    return sharedPreferences?.getInt("id", Int.MIN_VALUE)!!
+}
+
+
+/**
+ * This function is used the save the default address locally if the checkbox indicates that the address is default or not is marked checked
+ * Store the id as a shared preference.
+ */
+fun setDefaultAddress(context: Context, id: Int) {
+    val sharedPreferences = context.getSharedPreferences("defaultAddress", Context.MODE_PRIVATE)
+    with(sharedPreferences.edit()) {
+        putInt("id", id)
+        commit()
+    }
+}
+
+/**
  * It is an Adapter class which is used to put items in the Recycler view
  */
 class AddressAdapter(val list: MutableList<Address>, val fragment: DisplayAddressFragment) : RecyclerView.Adapter<AddressAdapter.AddressHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AddressHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.list_item_custom_layout, parent, false)
+        //Log.d("viewHolderCreated", "Inside onCreateViewHolder")
         return AddressHolder(view)
     }
 
@@ -183,17 +232,19 @@ class AddressAdapter(val list: MutableList<Address>, val fragment: DisplayAddres
                 .plus(address.city?.takeIf { it.isNotBlank() }?.plus(", ") ?: "")
                 .plus(address.zipcode ?: "")
 
-        if (address.id == getDefaultAddress()) {
+        if (address.id == getDefaultAddress(fragment.context!!)) {
             holder.checkBox.isChecked = true
-            Log.d(position.toString(), getDefaultAddress().toString())
+            Log.d(position.toString(), getDefaultAddress(fragment.context!!).toString())
         } else {
             holder.checkBox.isChecked = false
         }
 
         holder.imageView.setOnClickListener {
-            Log.d(position.toString(), "I was clicked")     // It was for testing
+            Log.d(position.toString(), "menu icon clicked")     // It was for testing
             fragment.showPopup(address, position, holder.imageView)
         }
+
+        Log.d("Inside onBindViewHolder", position.toString())
     }
 
     class AddressHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -207,13 +258,5 @@ class AddressAdapter(val list: MutableList<Address>, val fragment: DisplayAddres
      */
     interface ShowPopupCallback {
         fun showPopup(address: Address, position: Int, view: View)
-    }
-
-    /**
-     * The will return the id of the default address (if present) else, it returns a very small number
-     */
-    private fun getDefaultAddress(): Int {
-        val sharedPreferences = fragment.activity?.getSharedPreferences("defaultAddress", Context.MODE_PRIVATE)
-        return sharedPreferences?.getInt("id", Int.MIN_VALUE)!!
     }
 }

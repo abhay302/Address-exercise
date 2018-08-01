@@ -60,7 +60,7 @@ class AddOrEditAddressActivity : AppCompatActivity() {
         findViewById<EditText>(R.id.input_Zipcode).setText(address.zipcode ?: "")
         id = address.id!!
         if (id == getDefaultAddress()) {
-            findViewById<CheckBox>(R.id.checkBox_Make_Default_Address).apply {
+            val apply = findViewById<CheckBox>(R.id.checkBox_Make_Default_Address).apply {
                 isChecked = true
                 isClickable = false
             }
@@ -118,13 +118,16 @@ class AddOrEditAddressActivity : AppCompatActivity() {
 
             override fun onResponse(call: Call<Address>?, response: Response<Address>?) {
                 if (response?.code() == 200) {
-                    Toast.makeText(this@AddOrEditAddressActivity, "Success", Toast.LENGTH_LONG).show()
+                    //Toast.makeText(this@AddOrEditAddressActivity, "Success", Toast.LENGTH_LONG).show()
 
-                    if (this@AddOrEditAddressActivity.findViewById<CheckBox>(R.id.checkBox_Make_Default_Address).isChecked) {
+                    /*if (this@AddOrEditAddressActivity.findViewById<CheckBox>(R.id.checkBox_Make_Default_Address).isChecked) {
                         setDefaultAddress(response.body()?.id!!)
-                    }
+                    }*/
 
-                    startActivity(Intent(this@AddOrEditAddressActivity, BaseActivity::class.java))
+                    startActivity(Intent(this@AddOrEditAddressActivity, BaseActivity::class.java).apply {
+                        putExtra("address", response.body())
+                        putExtra("isChecked", this@AddOrEditAddressActivity.findViewById<CheckBox>(R.id.checkBox_Make_Default_Address).isChecked)
+                    })
                     this@AddOrEditAddressActivity.finish()
                 } else {
                     Toast.makeText(this@AddOrEditAddressActivity, "Invalid details", Toast.LENGTH_LONG).show()
@@ -150,12 +153,15 @@ class AddOrEditAddressActivity : AppCompatActivity() {
 
             override fun onResponse(call: Call<Address>?, response: Response<Address>?) {
                 if (response?.code() == 200) {
-                    Toast.makeText(this@AddOrEditAddressActivity, "Successfully updated address", Toast.LENGTH_LONG).show()
-                    if (this@AddOrEditAddressActivity.findViewById<CheckBox>(R.id.checkBox_Make_Default_Address).isChecked) {
+                    //Toast.makeText(this@AddOrEditAddressActivity, "Successfully updated address", Toast.LENGTH_LONG).show()
+                    /*if (this@AddOrEditAddressActivity.findViewById<CheckBox>(R.id.checkBox_Make_Default_Address).isChecked) {
                         setDefaultAddress(response.body()?.id!!)
-                    }
+                    }*/
 
-                    startActivity(Intent(this@AddOrEditAddressActivity, BaseActivity::class.java))
+                    startActivity(Intent(this@AddOrEditAddressActivity, BaseActivity::class.java).apply {
+                        putExtra("address", response.body())
+                        putExtra("isChecked", this@AddOrEditAddressActivity.findViewById<CheckBox>(R.id.checkBox_Make_Default_Address).isChecked)
+                    })
                     this@AddOrEditAddressActivity.finish()
                 } else {
                     Toast.makeText(this@AddOrEditAddressActivity, "Invalid details", Toast.LENGTH_LONG).show()
