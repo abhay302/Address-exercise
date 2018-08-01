@@ -2,6 +2,7 @@ package com.example.abhay.address
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.ImageView
@@ -17,16 +18,16 @@ class SplashScreen : AppCompatActivity() {
         setContentView(R.layout.activity_splash_screen)
 
         hide()
-        /*Thread {
+        Thread {
             Thread.sleep(3000)
             Handler(mainLooper).post {
                 startActivity(Intent(this, BaseActivity::class.java))
                 finish()
             }
-        }.start()*/
-        startActivity(Intent(this, BaseActivity::class.java))
+        }.start()
+        //startActivity(Intent(this, BaseActivity::class.java))
         //startActivity(Intent(this, AddOrEditAddressActivity::class.java))
-        finish()
+        //finish()
     }
 
     /**
