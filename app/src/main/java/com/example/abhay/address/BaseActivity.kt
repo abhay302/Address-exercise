@@ -3,11 +3,6 @@ package com.example.abhay.address
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
-import android.widget.Toast
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 /**
  * This activty will display a list of addresses
@@ -21,13 +16,18 @@ class BaseActivity : AppCompatActivity(), DisplayAddressFragment.EmptyListCallba
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_base)
-        fetchData()
+        //fetchData()
         //Toast.makeText(this, "Inside onCreate", Toast.LENGTH_SHORT).show()
+        if (intent?.extras?.get("addresses") != null) {
+            list = intent.extras?.get("addresses") as Array<Address>
+            changeFragment()
+        }
     }
 
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
         //fetchData()
+
         if (intent?.extras?.get("address") != null) {
             val address = intent.extras?.get("address") as Address
             val isChecked = intent.extras?.get("isChecked") as Boolean
@@ -36,33 +36,6 @@ class BaseActivity : AppCompatActivity(), DisplayAddressFragment.EmptyListCallba
             val fragment = supportFragmentManager.findFragmentByTag("display_address_fragment") as DisplayAddressFragment
             fragment.updateList(address, isChecked)
         }
-    }
-
-
-    /**
-     * This function fetches the addresses from the server using Retrofit
-     */
-    private fun fetchData() {
-        val call = RetrofitClient.client.getAllAddresses()
-
-        call.enqueue(object : Callback<Array<Address>> {
-
-            override fun onResponse(call: Call<Array<Address>>?, response: Response<Array<Address>>?) {
-                Log.d("received", response.toString())
-                Log.d("data", response?.body().toString())
-                list = response?.body()
-                //Toast.makeText(this@BaseActivity, list?.size.toString(), Toast.LENGTH_SHORT).show()
-
-                list?.indices?.forEach {
-                    Log.d(it.toString(), list!![it].toString())
-                }
-                changeFragment()
-            }
-
-            override fun onFailure(call: Call<Array<Address>>?, t: Throwable?) {
-                Toast.makeText(this@BaseActivity, "error occcurred", Toast.LENGTH_SHORT).show()
-            }
-        })
     }
 
     /**
@@ -79,7 +52,6 @@ class BaseActivity : AppCompatActivity(), DisplayAddressFragment.EmptyListCallba
             transaction.replace(R.id.address_display_fragment_container, displayAddressFragment, "display_address_fragment")
         }
 
-        //  transaction.addToBackStack(null)
         transaction.commit()
     }
 
@@ -96,5 +68,4 @@ class BaseActivity : AppCompatActivity(), DisplayAddressFragment.EmptyListCallba
             commit()
         }
     }
-
 }
