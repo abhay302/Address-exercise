@@ -30,7 +30,7 @@ class SplashScreen : AppCompatActivity() {
         hide()
 
         Thread {
-            fun startBaseActivity(): Unit {
+            fun startBaseActivity() {
                 Handler(mainLooper).post {
                     startActivity(Intent(this@SplashScreen, BaseActivity::class.java).apply {
                         putExtra("addresses", list)
@@ -40,14 +40,16 @@ class SplashScreen : AppCompatActivity() {
             }
 
             Thread.sleep(3000)
-            if (list == null) {
-                listReceivedListener = object : ListReceivedListener {
-                    override fun onDataReceived() {
-                        startBaseActivity()
+            synchronized(Unit) {
+                if (list == null) {
+                    listReceivedListener = object : ListReceivedListener {
+                        override fun onDataReceived() {
+                            startBaseActivity()
+                        }
                     }
+                } else {
+                    startBaseActivity()
                 }
-            } else {
-                startBaseActivity()
             }
         }.start()
 
@@ -74,8 +76,10 @@ class SplashScreen : AppCompatActivity() {
                 list?.indices?.forEach {
                     Log.d(it.toString(), list!![it].toString())
                 }
-                if (listReceivedListener != null) {
-                    listReceivedListener?.onDataReceived()
+                synchronized(Unit) {
+                    if (listReceivedListener != null) {
+                        listReceivedListener?.onDataReceived()
+                    }
                 }
             }
 
