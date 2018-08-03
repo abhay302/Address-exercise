@@ -6,12 +6,15 @@ import android.os.Handler
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.ImageView
+import com.example.abhay.address.display.BaseActivity
 
 /**
  * It is the first screen that will be displayed after opening the application
  */
 class SplashScreen : AppCompatActivity() {
 
+    private var startBaseActivity: (() -> Unit)? = null
+    private var isRunning: Boolean = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -20,14 +23,31 @@ class SplashScreen : AppCompatActivity() {
         hide()
         Thread {
             Thread.sleep(3000)
-            Handler(mainLooper).post {
+            startBaseActivity = {
                 startActivity(Intent(this, BaseActivity::class.java))
                 finish()
+            }
+            if (isRunning) {
+                Handler(mainLooper).post {
+                    startBaseActivity?.invoke()
+                }
             }
         }.start()
         //startActivity(Intent(this, BaseActivity::class.java))
         //startActivity(Intent(this, AddOrEditAddressActivity::class.java))
         //finish()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        isRunning = true
+        if (startBaseActivity != null)
+            startBaseActivity?.invoke()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        isRunning = false
     }
 
     /**

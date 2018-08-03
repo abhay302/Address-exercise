@@ -111,6 +111,7 @@
             android:textStyle="bold" />
 
         <ImageButton
+            android:id="@+id/send_button"
             android:layout_width="150dp"
             android:layout_height="45dp"
             android:layout_gravity="end"
@@ -118,7 +119,6 @@
             android:layout_marginEnd="26dp"
             android:adjustViewBounds="true"
             android:background="#ff9800"
-            android:onClick="sendData"
             android:padding="10dp"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_arrow_left" />
