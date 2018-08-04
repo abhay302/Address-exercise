@@ -1,12 +1,9 @@
-package com.example.abhay.address
+package com.example.abhay.address.network
 
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
 data class Address(
-
-        @SerializedName("token")
-        var token: String? = null,
 
         @SerializedName("id")
         var id: Int? = null,
@@ -46,4 +43,4 @@ data class Address(
 
         @SerializedName("country_id")
         var countryId: Int? = null
-) : Serializable
+): Serializable

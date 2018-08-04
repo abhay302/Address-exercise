@@ -1,10 +1,11 @@
-package com.example.abhay.address
+package com.example.abhay.address.display
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.abhay.address.R
 
 /**
  * It is the default fragment of the Base activity.
