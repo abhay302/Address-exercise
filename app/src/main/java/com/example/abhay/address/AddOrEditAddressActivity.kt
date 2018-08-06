@@ -25,6 +25,9 @@ import java.util.regex.Pattern
  */
 class AddOrEditAddressActivity : AppCompatActivity() {
 
+    private var startBaseActivity: (() -> Unit)? = null
+    private var isRunning: Boolean = true
+
     lateinit var requestObject: Address
 
     /**
@@ -38,6 +41,7 @@ class AddOrEditAddressActivity : AppCompatActivity() {
     var id = Int.MIN_VALUE
 
     lateinit var call: Call<JsonElement>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_or_edit_address)
@@ -48,10 +52,23 @@ class AddOrEditAddressActivity : AppCompatActivity() {
             inializeForm()
             title = "Update Address"
         } else {
-            //initializeFormTestingPurpose()  // for testing purpose
+            initializeFormTestingPurpose()  // for testing purpose
             title = "Add Address"
         }
     }
+
+    override fun onRestart() {
+        super.onRestart()
+        isRunning = true
+        if (startBaseActivity != null)
+            startBaseActivity?.invoke()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        isRunning = false
+    }
+
 
     /**
      * will register the click listener for the send button
@@ -101,11 +118,17 @@ class AddOrEditAddressActivity : AppCompatActivity() {
             override fun onResponse(call: Call<JsonElement>?, response: Response<JsonElement>?) {
                 if (response?.code() == 200) {
                     val address = Gson().fromJson(response.body().toString(), Address::class.java)
-                    startActivity(Intent(this@AddOrEditAddressActivity, BaseActivity::class.java).apply {
-                        putExtra("address", address)
-                        putExtra("isChecked", this@AddOrEditAddressActivity.findViewById<CheckBox>(R.id.checkBox_Make_Default_Address).isChecked)
-                    })
-                    this@AddOrEditAddressActivity.finish()
+
+                    startBaseActivity = {
+                        startActivity(Intent(this@AddOrEditAddressActivity, BaseActivity::class.java).apply {
+                            putExtra("address", address)
+                            putExtra("isChecked", this@AddOrEditAddressActivity.findViewById<CheckBox>(R.id.checkBox_Make_Default_Address).isChecked)
+                        })
+                        this@AddOrEditAddressActivity.finish()
+                    }
+                    if (isRunning) {
+                        startBaseActivity?.invoke()
+                    }
                 } else if (response?.code() == 422) {
                     val error = Gson().fromJson(response.errorBody()?.string(), ErrorReply::class.java)
                     setErrorFields(error.errors)
@@ -178,6 +201,7 @@ class AddOrEditAddressActivity : AppCompatActivity() {
      */
     private fun initializeFormTestingPurpose() {
         findViewById<EditText>(R.id.input_Name).setText("My name")
+        //findViewById<EditText>(R.id.input_Address1).setText((Math.random()*1000).toInt().toString())
         findViewById<EditText>(R.id.input_Address1).setText("My address1")
         findViewById<EditText>(R.id.input_Address2).setText("My address2")
         findViewById<EditText>(R.id.input_City).setText("In my city")

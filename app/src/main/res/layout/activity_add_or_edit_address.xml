@@ -11,16 +11,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingTop="15dp">
+        android:paddingTop="15dp"
+        android:paddingLeft="39.14dp"
+        android:paddingRight="40.85dp">
 
         <EditText
             android:id="@+id/input_Name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
-            android:layout_marginEnd="26dp"
-
-            android:layout_marginStart="26dp"
             android:layout_marginTop="15dp"
             android:ems="10"
             android:hint="Name"
@@ -31,9 +30,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
-            android:layout_marginEnd="26dp"
-
-            android:layout_marginStart="26dp"
             android:layout_marginTop="15dp"
             android:ems="10"
             android:hint="Address Line 1"
@@ -44,8 +40,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
-            android:layout_marginEnd="26dp"
-            android:layout_marginStart="26dp"
             android:layout_marginTop="15dp"
             android:ems="10"
             android:hint="Address Line 2"
@@ -56,8 +50,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
-            android:layout_marginEnd="26dp"
-            android:layout_marginStart="26dp"
             android:layout_marginTop="15dp"
             android:ems="10"
             android:hint="Landmark"
@@ -68,8 +60,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
-            android:layout_marginEnd="26dp"
-            android:layout_marginStart="26dp"
             android:layout_marginTop="15dp"
             android:ems="10"
             android:hint="City"
@@ -80,8 +70,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
-            android:layout_marginEnd="26dp"
-            android:layout_marginStart="26dp"
             android:layout_marginTop="15dp"
             android:ems="10"
             android:hint="State"
@@ -92,8 +80,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
-            android:layout_marginEnd="26dp"
-            android:layout_marginStart="26dp"
             android:layout_marginTop="15dp"
             android:ems="10"
             android:hint="Pincode"
@@ -101,26 +87,21 @@
 
         <CheckBox
             android:id="@+id/checkBox_Make_Default_Address"
-            android:layout_width="183dp"
+            android:layout_width="269.14dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
-            android:layout_marginEnd="26dp"
-            android:layout_marginStart="26dp"
             android:layout_marginTop="15dp"
             android:text="Make this my default address"
             android:textStyle="bold" />
 
         <ImageButton
             android:id="@+id/send_button"
-            android:layout_width="150dp"
-            android:layout_height="45dp"
+            android:layout_width="142.85dp"
+            android:layout_height="42.85dp"
             android:layout_gravity="end"
             android:layout_marginBottom="15dp"
-            android:layout_marginEnd="26dp"
             android:adjustViewBounds="true"
             android:background="#ff9800"
-            android:padding="10dp"
-            android:scaleType="fitCenter"
             android:src="@drawable/ic_arrow_left" />
 
     </LinearLayout>

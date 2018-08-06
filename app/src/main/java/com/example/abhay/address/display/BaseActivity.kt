@@ -19,13 +19,15 @@ import retrofit2.Response
  * 2. DisplayAddressFragment: Will display a list of addresses in this fragment
  */
 class BaseActivity : AppCompatActivity(), DisplayAddressFragment.EmptyListCallback {
+    private var showFragment: (() -> Unit)? = null
+    private var isRunning: Boolean = true
+
     var list: Array<Address>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_base)
         fetchData()
-        //Toast.makeText(this, "Inside onCreate", Toast.LENGTH_SHORT).show()
     }
 
     override fun onNewIntent(intent: Intent?) {
@@ -34,16 +36,28 @@ class BaseActivity : AppCompatActivity(), DisplayAddressFragment.EmptyListCallba
         if (intent?.extras?.get("address") != null) {
             val address = intent.extras?.get("address") as Address
             val isChecked = intent.extras?.get("isChecked") as Boolean
-            //Toast.makeText(this, address.toString(), Toast.LENGTH_SHORT).show()
-
-            /*if(supportFragmentManager.findFragmentByTag("display_address_fragment") as? DisplayAddressFragment == null) {
+            if (list == null) {
+                //list?.add(address)
+                list = arrayOf(address)
                 changeFragment()
-            }*/
-            val fragment = supportFragmentManager.findFragmentByTag("display_address_fragment") as DisplayAddressFragment
-            fragment.updateList(address, isChecked)
+            } else {
+                val fragment = supportFragmentManager.findFragmentByTag("display_address_fragment") as DisplayAddressFragment
+                fragment.updateList(address, isChecked)
+            }
         }
     }
 
+    override fun onRestart() {
+        super.onRestart()
+        isRunning = true
+        if (showFragment != null)
+            showFragment?.invoke()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        isRunning = false
+    }
 
     /**
      * This function fetches the addresses from the server using Retrofit
@@ -62,7 +76,11 @@ class BaseActivity : AppCompatActivity(), DisplayAddressFragment.EmptyListCallba
                 list?.indices?.forEach {
                     Log.d(it.toString(), list!![it].toString())
                 }
-                changeFragment()
+                showFragment = ::changeFragment
+                //changeFragment()
+                if (isRunning) {
+                    showFragment?.invoke()
+                }
             }
 
             override fun onFailure(call: Call<Array<Address>>?, t: Throwable?) {
@@ -74,29 +92,25 @@ class BaseActivity : AppCompatActivity(), DisplayAddressFragment.EmptyListCallba
     /**
      * This function will make the activity change a fragment depending upon whether the list is empty or not
      */
-    private fun changeFragment() {
-        val transaction = supportFragmentManager.beginTransaction()
+    private fun changeFragment() = with(supportFragmentManager.beginTransaction()) {
 
         if (list?.isEmpty() == true) {
-            transaction.replace(R.id.address_display_fragment_container, BlankAddressFragment(), "blank_address_fragment")
+            replace(R.id.address_display_fragment_container, BlankAddressFragment(), "blank_address_fragment")
         } else {
             val bundle = Bundle().apply { putSerializable("addresses", list) }
             val displayAddressFragment = DisplayAddressFragment().apply { arguments = bundle }
-            transaction.replace(R.id.address_display_fragment_container, displayAddressFragment, "display_address_fragment")
+            replace(R.id.address_display_fragment_container, displayAddressFragment, "display_address_fragment")
         }
-
-        //  transaction.addToBackStack(null)
-        transaction.commit()
+        commit()
+        Unit
     }
 
     /**
      * It is a callback method that the DisplayAddressFragment will call if on deletion of an element the list becomes empty
      */
     override fun notifyListIsEmpty() {
-        /*val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.address_display_fragment_container, BlankAddressFragment())
-        transaction.commit()*/
 
+        list = null
         with(supportFragmentManager.beginTransaction()) {
             replace(R.id.address_display_fragment_container, BlankAddressFragment())
             commit()

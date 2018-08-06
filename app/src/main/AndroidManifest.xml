@@ -11,7 +11,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".SplashScreen"
-            android:label="@string/app_name">
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,10 +22,13 @@
         <activity
             android:name=".display.BaseActivity"
             android:label="Addresses"
+            android:launchMode="singleTask"
             android:parentActivityName=".SplashScreen"
-            android:launchMode="singleTask"/>
-        <activity android:name=".AddOrEditAddressActivity"
-            android:parentActivityName=".display.BaseActivity" />
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AddOrEditAddressActivity"
+            android:parentActivityName=".display.BaseActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

@@ -59,24 +59,32 @@ class DisplayAddressFragment : Fragment(), AddressAdapter.ShowPopupCallback {
      */
     fun updateList(address: Address, isChecked: Boolean) {
         val pos = list.indexOfFirst { it.id == address.id }
+        Log.d("address received:", address.toString())
         if (isChecked) {
             val posOfCurrentDefaultAddress = list.indexOfFirst { it.id == getDefaultAddress(context!!) }
-            Log.d("posCurrentDefault", posOfCurrentDefaultAddress.toString())
+            //Log.d("posCurrentDefault", posOfCurrentDefaultAddress.toString())
             if (posOfCurrentDefaultAddress >= 0) {
                 recyclerView.adapter.notifyItemChanged(posOfCurrentDefaultAddress)
             }
             setDefaultAddress(context!!, address.id!!)
-            Log.d("New default address is ", getDefaultAddress(context!!).toString())
+            //Log.d("New default address is ", getDefaultAddress(context!!).toString())
         } else {
-            Log.d("Old default address is ", getDefaultAddress(context!!).toString())
+            //Log.d("Old default address is ", getDefaultAddress(context!!).toString())
         }
-        Log.d("newAddressPosition", pos.toString())
+
+        //Log.d("newAddressPosition", pos.toString())
+        //Log.d("${address.id}", address.toString())
         if (pos == -1) {                        // It means that address is not present in the list i.e. create query
+            //list.add(0, address)
             list.add(0, address)
             recyclerView.adapter.notifyItemInserted(0)
+            recyclerView.layoutManager.scrollToPosition(0)
         } else {                                // It means that the address is already present in the list i.e. update query
             list[pos] = address
             recyclerView.adapter.notifyItemChanged(pos)
+        }
+        list.forEachIndexed { index, address ->
+            Log.d("$index", "$address")
         }
     }
 
@@ -145,14 +153,16 @@ class DisplayAddressFragment : Fragment(), AddressAdapter.ShowPopupCallback {
 
                 override fun onResponse(call: Call<DeleteActionReply>?, response: Response<DeleteActionReply>?) {
                     if (response?.code() == 200) {
-                        /*Toast.makeText(activity, response.body()?.message
-                                ?: "Some acknowledgement message", Toast.LENGTH_LONG).show()*/
+
+                        Log.d("before position: $position", "before size: ${list.size}")
                         list.removeAt(position)
+                        Log.d("before position: $position", "before size: ${list.size}")
                         if (list.isEmpty()) {
                             (activity as BaseActivity).notifyListIsEmpty()   // Tells the hosting activity to change the fragment since, the list is now empty.
                         }
-                        //recyclerView.adapter?.notifyDataSetChanged()
                         recyclerView.adapter.notifyItemRemoved(position)
+
+                        Log.d("after position: $position", "size: ${list.size}")
                     } else {
                         Toast.makeText(activity, response?.body()?.errors
                                 ?: "Problem in deletion", Toast.LENGTH_LONG).show()
@@ -174,6 +184,7 @@ class DisplayAddressFragment : Fragment(), AddressAdapter.ShowPopupCallback {
                 .setTitle("Alert!!!")
                 .setCancelable(true)
                 .setPositiveButton("Yes") { dialogInterface, i ->
+                    Log.d(position.toString(), "delete request at")
                     sendDeleteRequest(address.id!!, position)
 
                     dialogInterface.cancel()
@@ -232,13 +243,15 @@ class AddressAdapter(val list: MutableList<Address>, val fragment: DisplayAddres
     override fun onBindViewHolder(holder: AddressHolder, position: Int) {
         val address = list[position]
 
-        holder.textView.text = (address.address1?.takeIf { it.isNotBlank() }?.plus(", ") ?: "")
+        //holder.textView.text = (address.address1?.takeIf { it.isNotBlank() }?.plus(", ") ?: "")
+        holder.textView.text = (address.id.toString().plus(", "))
                 .plus(address.address2?.takeIf { it.isNotBlank() }?.plus(", ") ?: "")
                 .plus(address.city?.takeIf { it.isNotBlank() }?.plus(", ") ?: "")
                 .plus(address.zipcode ?: "")
 
         if (address.id == getDefaultAddress(fragment.context!!)) {
             holder.checkBox.isChecked = true
+            //holder.checkBox.setHasTransientState(true)
             Log.d(position.toString(), getDefaultAddress(fragment.context!!).toString())
         } else {
             holder.checkBox.isChecked = false
@@ -246,7 +259,8 @@ class AddressAdapter(val list: MutableList<Address>, val fragment: DisplayAddres
 
         holder.imageView.setOnClickListener {
             Log.d(position.toString(), "menu icon clicked")     // It was for testing
-            fragment.showPopup(address, position, holder.imageView)
+            //fragment.showPopup(address, position, holder.imageView)
+            fragment.showPopup(address, holder.adapterPosition, holder.imageView)
         }
 
         Log.d("Inside onBindViewHolder", position.toString())
