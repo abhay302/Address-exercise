@@ -3,7 +3,10 @@ package com.example.abhay.address.activities
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.support.design.widget.TextInputLayout
 import android.support.v7.app.AppCompatActivity
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import android.widget.*
@@ -69,6 +72,10 @@ class AddOrEditAddressActivity : AppCompatActivity() {
             //initializeFormTestingPurpose()  // for testing purpose
             "Add Address"
         }
+        addTextChangeListener(R.id.input_Address1, R.id.input_Address1_Container)
+        addTextChangeListener(R.id.input_State, R.id.input_State_Container)
+        addTextChangeListener(R.id.input_City, R.id.input_City_Container)
+        addTextChangeListener(R.id.input_Zipcode, R.id.input_Zipcode_Container)
     }
 
     override fun onRestart() {
@@ -98,6 +105,7 @@ class AddOrEditAddressActivity : AppCompatActivity() {
                 RetrofitClient.client.createAddress(requestObject)
             }
             sendRequest()
+            it.isClickable = false
         }
     }
 
@@ -155,15 +163,18 @@ class AddOrEditAddressActivity : AppCompatActivity() {
                     val error = Gson().fromJson(response.errorBody()?.string(), ErrorReply::class.java)
                     setErrorFields(error.errors)
                 } else if (response?.code() == 404) {
-                    Toast.makeText(this@AddOrEditAddressActivity, "Address not found", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@AddOrEditAddressActivity, "Address not found", Toast.LENGTH_SHORT).show()
                 } else {
-                    Toast.makeText(this@AddOrEditAddressActivity, "Error occurred", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@AddOrEditAddressActivity, "Error occurred", Toast.LENGTH_SHORT).show()
                 }
                 findViewById<ProgressBar>(R.id.progressBar).visibility = View.GONE
+                findViewById<ImageButton>(R.id.send_button).isClickable = true
             }
 
             override fun onFailure(call: Call<JsonElement>?, t: Throwable?) {
-                Toast.makeText(this@AddOrEditAddressActivity, "Error occurred", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@AddOrEditAddressActivity, "Error occurred", Toast.LENGTH_SHORT).show()
+                findViewById<ProgressBar>(R.id.progressBar).visibility = View.GONE
+                findViewById<ImageButton>(R.id.send_button).isClickable = true
             }
 
         })
@@ -173,24 +184,40 @@ class AddOrEditAddressActivity : AppCompatActivity() {
      * This will set the error fields for the input fields which has some error
      */
     private fun setErrorFields(errors: ErrorReply.Errors?) {
-        if (errors?.city != null)
+        /*if (errors?.city != null)
             findViewById<EditText>(R.id.input_City).error = errors.city?.get(0)
         if (errors?.address1 != null)
-            findViewById<EditText>(R.id.input_Address1).error = errors.address1?.get(0)
+            findViewById<TextInputLayout>(R.id.input_Address1_Container).error = errors.address1?.get(0)
+            //findViewById<EditText>(R.id.input_Address1).error = errors.address1?.get(0)
         if (errors?.stateId != null)
             findViewById<EditText>(R.id.input_State).error = errors.stateId?.get(0)
         if (errors?.zipcode != null)
-            findViewById<EditText>(R.id.input_Zipcode).error = errors.zipcode?.get(0)
+            findViewById<EditText>(R.id.input_Zipcode).error = errors.zipcode?.get(0)*/
+
+        if (errors?.city != null)
+            findViewById<TextInputLayout>(R.id.input_City_Container).error = errors.city?.get(0)
+        if (errors?.address1 != null)
+            findViewById<TextInputLayout>(R.id.input_Address1_Container).error = errors.address1?.get(0)
+        if (errors?.stateId != null)
+            findViewById<TextInputLayout>(R.id.input_State_Container).error = errors.stateId?.get(0)
+        if (errors?.zipcode != null)
+            findViewById<TextInputLayout>(R.id.input_Zipcode_Container).error = errors.zipcode?.get(0)
     }
 
     /**
      * This will remove error fields from all the possibly erroneous fields before sending request to the server
      */
     private fun removeErrorFields() {
-        findViewById<EditText>(R.id.input_City).error = null
-        findViewById<EditText>(R.id.input_Address1).error = null
+        /*findViewById<EditText>(R.id.input_City).error = null
+        //findViewById<EditText>(R.id.input_Address1).error = null
+        findViewById<TextInputLayout>(R.id.input_Address1_Container).error = null
         findViewById<EditText>(R.id.input_State).error = null
-        findViewById<EditText>(R.id.input_Zipcode).error = null
+        findViewById<EditText>(R.id.input_Zipcode).error = null*/
+
+        findViewById<TextInputLayout>(R.id.input_City_Container).error = null
+        findViewById<TextInputLayout>(R.id.input_Address1_Container).error = null
+        findViewById<TextInputLayout>(R.id.input_State_Container).error = null
+        findViewById<TextInputLayout>(R.id.input_Zipcode_Container).error = null
     }
 
     /**
@@ -221,6 +248,22 @@ class AddOrEditAddressActivity : AppCompatActivity() {
                 isClickable = false
             }
         }
+    }
+
+    fun addTextChangeListener(editTextId: Int, containerId: Int) {
+        findViewById<EditText>(editTextId).addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                findViewById<TextInputLayout>(containerId).error = null
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+            }
+        })
     }
 
     /**

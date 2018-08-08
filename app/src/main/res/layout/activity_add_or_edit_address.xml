@@ -24,7 +24,7 @@
         android:layout_below="@id/my_toolbar"
         android:scrollbars="none">
 
-        <LinearLayout
+        <!--<LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -137,6 +137,205 @@
                 android:textColor="#9b9b9b"
                 android:textSize="15sp"
                 android:theme="@style/CustomCheckBox" />
+
+            <ImageButton
+                android:id="@+id/send_button"
+                android:layout_width="125dp"
+                android:layout_height="37.5dp"
+                android:layout_gravity="end"
+                android:layout_marginBottom="64.75dp"
+                android:layout_marginEnd="17.75dp"
+                android:layout_marginTop="29.23dp"
+                android:adjustViewBounds="true"
+                android:background="#ff9800"
+                android:src="@drawable/ic_arrow_left" />
+
+        </LinearLayout>-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_Name_Container"
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:layout_marginEnd="35.75dp"
+                android:layout_marginStart="34.25dp"
+                android:layout_marginTop="25.5dp"
+                android:padding="0dp"
+                app:errorEnabled="true"
+                app:hintEnabled="false">
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/input_Name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Name"
+                    android:inputType="text"
+                    android:paddingBottom="15dp"
+                    android:paddingStart="11.75dp"
+                    android:textSize="17.5sp"
+                    app:backgroundTint="#979797" />
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_Address1_Container"
+                android:layout_width="match_parent"
+                android:layout_height="78dp"
+                android:layout_marginTop="0.25dp"
+                android:layout_marginEnd="35.75dp"
+                android:layout_marginStart="34.375dp"
+                android:padding="0dp"
+                app:errorEnabled="true"
+                app:hintEnabled="false">
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/input_Address1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Address Line 1"
+                    android:inputType="text"
+                    android:paddingBottom="15dp"
+                    android:paddingStart="11.625dp"
+                    android:textSize="17.5sp"
+                    app:backgroundTint="#979797" />
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_Address2_Container"
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:layout_marginEnd="32.5dp"
+                android:layout_marginStart="37.5dp"
+                android:layout_marginTop="0dp"
+                android:padding="0dp"
+                app:errorEnabled="true"
+                app:hintEnabled="false">
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/input_Address2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Address Line 2"
+                    android:inputType="text"
+                    android:paddingBottom="15dp"
+                    android:paddingStart="11.75dp"
+                    android:textSize="17.5sp"
+                    app:backgroundTint="#979797" />
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_Landmark_Container"
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:layout_marginEnd="32.5dp"
+                android:layout_marginStart="37.5dp"
+                android:layout_marginTop="5dp"
+                android:padding="0dp"
+                app:errorEnabled="true"
+                app:hintEnabled="false">
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/input_Landmark"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Landmark"
+                    android:inputType="text"
+                    android:paddingBottom="15dp"
+                    android:paddingStart="11.75dp"
+                    android:textSize="17.5sp"
+                    app:backgroundTint="#979797" />
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_City_Container"
+                android:layout_width="match_parent"
+                android:layout_height="78dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="38dp"
+                android:padding="0dp"
+                app:errorEnabled="true"
+                app:hintEnabled="false">
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/input_City"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="City"
+                    android:inputType="text"
+                    android:paddingBottom="15dp"
+                    android:paddingStart="11.75dp"
+                    android:textSize="17.5sp"
+                    app:backgroundTint="#979797" />
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_State_Container"
+                android:layout_width="match_parent"
+                android:layout_height="78dp"
+                android:layout_marginEnd="28.75dp"
+                android:layout_marginStart="41.25dp"
+                android:layout_marginTop="0dp"
+                android:padding="0dp"
+                app:errorEnabled="true"
+                app:hintEnabled="false">
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/input_State"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="State"
+                    android:inputType="number"
+                    android:paddingBottom="15dp"
+                    android:paddingStart="11.75dp"
+                    android:textSize="17.5sp"
+                    app:backgroundTint="#979797" />
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_Zipcode_Container"
+                android:layout_width="match_parent"
+                android:layout_height="78dp"
+                android:layout_marginEnd="28.75dp"
+                android:layout_marginStart="41.25dp"
+                android:layout_marginTop="0dp"
+                android:padding="0dp"
+                app:errorEnabled="true"
+                app:hintEnabled="false">
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/input_Zipcode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Pincode"
+                    android:inputType="number"
+                    android:paddingBottom="14dp"
+                    android:paddingStart="11.75dp"
+                    android:textSize="17.5sp"
+                    app:backgroundTint="#979797" />
+            </android.support.design.widget.TextInputLayout>
+
+
+            <CheckBox
+                android:id="@+id/checkBox_Make_Default_Address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="41.25dp"
+                android:layout_marginTop="20dp"
+                android:text="Make this my default address"
+                android:textColor="#9b9b9b"
+                android:textSize="15sp"
+                android:theme="@style/CustomCheckBox"
+                android:paddingStart="6.25dp" />
 
             <ImageButton
                 android:id="@+id/send_button"

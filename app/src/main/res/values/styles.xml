@@ -40,4 +40,9 @@
         <item name="android:textSize">15sp</item>
     </style>
 
+    <style name="ErrorTextAppearance">
+        <item name="android:paddingTop">0dp</item>
+        <item name="android:layout_marginTop">0dp</item>
+    </style>
+
 </resources>

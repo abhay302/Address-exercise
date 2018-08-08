@@ -14,6 +14,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
+import android.widget.ProgressBar
 import android.widget.Toast
 import com.example.abhay.address.R
 import com.example.abhay.address.activities.AddOrEditAddressActivity
@@ -22,6 +23,7 @@ import com.example.abhay.address.adapters.AddressAdapter
 import com.example.abhay.address.network.Address
 import com.example.abhay.address.network.DeleteActionReply
 import com.example.abhay.address.network.RetrofitClient
+import com.google.gson.Gson
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -146,6 +148,11 @@ class DisplayAddressFragment : Fragment(), AddressAdapter.ShowPopupCallback {
     private fun deleteAddress(address: Address, position: Int) {
 
         fun sendDeleteRequest(id: Int, position: Int) {
+            val holder = recyclerView.findViewHolderForAdapterPosition(position) as AddressAdapter.AddressHolder
+            holder.imageView.isClickable = false
+            activity?.findViewById<ProgressBar>(R.id.progressBar)?.visibility = View.VISIBLE
+
+
             val call = RetrofitClient.client.deleteAddress(id)
 
             call.enqueue(object : Callback<DeleteActionReply> {
@@ -167,13 +174,18 @@ class DisplayAddressFragment : Fragment(), AddressAdapter.ShowPopupCallback {
                             setDefaultAddress(context!!, Int.MIN_VALUE)
                         }
                     } else {
-                        Toast.makeText(activity, response?.body()?.errors
+                        val error = Gson().fromJson(response?.errorBody()?.string(), DeleteActionReply::class.java)
+                        Toast.makeText(activity, error.errors
                                 ?: "Problem in deletion", Toast.LENGTH_LONG).show()
                     }
+                    holder.imageView.isClickable = true
+                    activity?.findViewById<ProgressBar>(R.id.progressBar)?.visibility = View.GONE
                 }
 
                 override fun onFailure(call: Call<DeleteActionReply>?, t: Throwable?) {
                     Toast.makeText(activity, "Error occurred", Toast.LENGTH_LONG).show()
+                    holder.imageView.isClickable = true
+                    activity?.findViewById<ProgressBar>(R.id.progressBar)?.visibility = View.GONE
                 }
 
             })
@@ -181,7 +193,6 @@ class DisplayAddressFragment : Fragment(), AddressAdapter.ShowPopupCallback {
 
         /*createRetrofitClient()
         sendDeleteRequest(address.id!!, position)*/
-
         val builder = AlertDialog.Builder(activity)
         builder.setMessage("Do you really want to delete this address?")
                 .setTitle("Alert!!!")
