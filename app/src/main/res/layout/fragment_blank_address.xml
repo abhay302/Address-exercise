@@ -5,63 +5,50 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFF"
-    tools:context=".display.BlankAddressFragment">
+    tools:context=".fragments.BlankAddressFragment">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:layout_centerInParent="true">
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textAlignment="center">
 
         <TextView
             android:id="@+id/heading_blank_address_book"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_height="23dp"
+            android:fontFamily="@font/muli_black"
             android:text="Your address book is blank"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:textSize="18.75sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.120000005" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/content_blank_address_book"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:text="Kindly add shipping/billing addresses and enjoy faster checkout"
-            android:textAlignment="center"
+            android:layout_marginTop="18.75dp"
+            android:gravity="center"
+            android:text="Kindly add shipping / billing addresses and enjoy faster checkout"
             android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/heading_blank_address_book"
-            app:layout_constraintVertical_bias="0.13" />
+            app:layout_constraintTop_toBottomOf="@+id/heading_blank_address_book" />
 
         <android.support.design.widget.FloatingActionButton
 
             android:id="@+id/add_address_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="7dp"
             android:foregroundGravity="center"
+            android:scaleType="center"
             android:theme="@style/MyAddButtonTheme"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:elevation="0dp"
+            app:fabCustomSize="53.75dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/content_blank_address_book"
-            app:layout_constraintVertical_bias="0.29000002"
             app:srcCompat="@drawable/add_address_icon" />
 
 

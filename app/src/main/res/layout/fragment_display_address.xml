@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".display.DisplayAddressFragment">
+    tools:context=".fragments.DisplayAddressFragment">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/display_address_recycler_view"
@@ -16,8 +16,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_margin="16dp"
+        android:layout_marginBottom="19.75dp"
+        android:layout_marginEnd="21.75dp"
+        android:scaleType="center"
+        android:theme="@style/MyAddButtonTheme"
+        app:fabCustomSize="53.75dp"
         app:srcCompat="@drawable/add_address_icon"
-        android:theme="@style/MyAddButtonTheme"/>
+        app:elevation="0dp" />
 
 </FrameLayout>

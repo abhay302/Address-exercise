@@ -1,11 +1,14 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">#777778</item>
+        <item name="colorAccent">#979797</item>
+        <item name="android:textColor">@color/defaultTextColor</item>
+        <item name="android:textColorHint">@color/defaultTextColor</item>
+        <item name="android:fontFamily">@font/muli</item>
     </style>
 
     <style name="FullscreenTheme" parent="AppTheme">
@@ -24,5 +27,17 @@
         <item name="colorAccent">#ff9800</item>
     </style>
 
+    <style name="CustomCheckBox" parent="AppTheme">
+        <item name="colorAccent">#777778</item>
+    </style>
+
+    <style name="ToolbarTheme">
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:colorControlNormal">#fff</item>
+    </style>
+
+    <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">15sp</item>
+    </style>
 
 </resources>

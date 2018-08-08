@@ -5,12 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#4A90E2"
-    tools:context=".SplashScreen">
+    tools:context=".activities.SplashScreen">
 
     <ImageView
         android:id="@+id/fullscreen_content"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="80dp"
+        android:layout_height="82dp"
         android:layout_gravity="center"
         android:keepScreenOn="true"
         app:srcCompat="@drawable/splash_screen_image" />

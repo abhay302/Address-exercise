@@ -1,110 +1,156 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/scrollView2"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:scrollbars="none">
+    android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <include
+        android:id="@+id/my_toolbar"
+        layout="@layout/toolbar" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingTop="15dp"
-        android:paddingLeft="39.14dp"
-        android:paddingRight="40.85dp">
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
 
-        <EditText
-            android:id="@+id/input_Name"
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/my_toolbar"
+        android:scrollbars="none">
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:layout_marginTop="15dp"
-            android:ems="10"
-            android:hint="Name"
-            android:inputType="text" />
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/input_Address1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:layout_marginTop="15dp"
-            android:ems="10"
-            android:hint="Address Line 1"
-            android:inputType="text" />
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/input_Name"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginEnd="35.75dp"
+                android:layout_marginStart="34.25dp"
+                android:layout_marginTop="20.5dp"
+                android:hint="Name"
+                android:inputType="text"
+                android:paddingBottom="12dp"
+                android:paddingStart="7.75dp"
+                android:textSize="17.5sp"
+                app:backgroundTint="#979797" />
 
-        <EditText
-            android:id="@+id/input_Address2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:layout_marginTop="15dp"
-            android:ems="10"
-            android:hint="Address Line 2"
-            android:inputType="text" />
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/input_Address1"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginEnd="35.985dp"
+                android:layout_marginStart="34.375dp"
+                android:layout_marginTop="22.25dp"
+                android:hint="Address Line 1"
+                android:inputType="text"
+                android:paddingBottom="12.25dp"
+                android:paddingStart="7.625dp"
+                android:textSize="17.5sp"
+                app:backgroundTint="#979797" />
 
-        <EditText
-            android:id="@+id/input_Landmark"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:layout_marginTop="15dp"
-            android:ems="10"
-            android:hint="Landmark"
-            android:inputType="text" />
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/input_Address2"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginEnd="32.5dp"
+                android:layout_marginStart="37.5dp"
+                android:layout_marginTop="27.25dp"
+                android:hint="Address Line 2"
+                android:inputType="text"
+                android:paddingBottom="12dp"
+                android:paddingStart="7.75dp"
+                android:textSize="17.5sp"
+                app:backgroundTint="#979797" />
 
-        <EditText
-            android:id="@+id/input_City"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:layout_marginTop="15dp"
-            android:ems="10"
-            android:hint="City"
-            android:inputType="text" />
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/input_Landmark"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginEnd="32.5dp"
+                android:layout_marginStart="37.5dp"
+                android:layout_marginTop="27dp"
+                android:hint="Landmark"
+                android:inputType="text"
+                android:paddingBottom="12dp"
+                android:paddingStart="7.75dp"
+                android:textSize="17.5sp"
+                app:backgroundTint="#979797" />
 
-        <EditText
-            android:id="@+id/input_State"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:layout_marginTop="15dp"
-            android:ems="10"
-            android:hint="State"
-            android:inputType="number" />
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/input_City"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="38dp"
+                android:layout_marginTop="21.75dp"
+                android:hint="City"
+                android:inputType="text"
+                android:paddingBottom="12dp"
+                android:paddingStart="7.75dp"
+                android:textSize="17.5sp"
+                app:backgroundTint="#979797" />
 
-        <EditText
-            android:id="@+id/input_Zipcode"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:layout_marginTop="15dp"
-            android:ems="10"
-            android:hint="Pincode"
-            android:inputType="number" />
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/input_State"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginEnd="28.75dp"
+                android:layout_marginStart="41.25dp"
+                android:layout_marginTop="27dp"
+                android:hint="State"
+                android:inputType="number"
+                android:paddingBottom="12dp"
+                android:paddingStart="7.75dp"
+                android:textSize="17.5sp"
+                app:backgroundTint="#979797" />
 
-        <CheckBox
-            android:id="@+id/checkBox_Make_Default_Address"
-            android:layout_width="269.14dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:layout_marginTop="15dp"
-            android:text="Make this my default address"
-            android:textStyle="bold" />
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/input_Zipcode"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginEnd="28.75dp"
+                android:layout_marginStart="41.25dp"
+                android:layout_marginTop="27dp"
+                android:hint="Pincode"
+                android:inputType="number"
+                android:paddingBottom="12dp"
+                android:paddingStart="7.75dp"
+                android:textSize="17.5sp"
+                app:backgroundTint="#979797" />
 
-        <ImageButton
-            android:id="@+id/send_button"
-            android:layout_width="142.85dp"
-            android:layout_height="42.85dp"
-            android:layout_gravity="end"
-            android:layout_marginBottom="15dp"
-            android:adjustViewBounds="true"
-            android:background="#ff9800"
-            android:src="@drawable/ic_arrow_left" />
+            <CheckBox
+                android:id="@+id/checkBox_Make_Default_Address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="44.25dp"
+                android:layout_marginTop="47dp"
+                android:text="Make this my default address"
+                android:textColor="#9b9b9b"
+                android:textSize="15sp"
+                android:theme="@style/CustomCheckBox" />
 
-    </LinearLayout>
+            <ImageButton
+                android:id="@+id/send_button"
+                android:layout_width="125dp"
+                android:layout_height="37.5dp"
+                android:layout_gravity="end"
+                android:layout_marginBottom="64.75dp"
+                android:layout_marginEnd="17.75dp"
+                android:layout_marginTop="29.23dp"
+                android:adjustViewBounds="true"
+                android:background="#ff9800"
+                android:src="@drawable/ic_arrow_left" />
 
-</ScrollView>
+        </LinearLayout>
 
+    </ScrollView>
+</RelativeLayout>
