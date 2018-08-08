@@ -4,6 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import android.widget.ImageButton
+import android.widget.TextView
 import android.widget.Toast
 import com.example.abhay.address.R
 import com.example.abhay.address.fragments.BlankAddressFragment
@@ -43,7 +45,12 @@ class BaseActivity : AppCompatActivity(), DisplayAddressFragment.EmptyListCallba
         val toolbar = findViewById<android.support.v7.widget.Toolbar>(R.id.my_toolbar)
         //toolbar.setTitleTextColor(Color.argb(0.8444f, 255f,255f,255f))
         setSupportActionBar(toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        title = ""
+        //supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        toolbar.findViewById<ImageButton>(R.id.back_button).setOnClickListener {
+            finish()
+        }
+        toolbar.findViewById<TextView>(R.id.title).text = "Addresses"
     }
 
     override fun onNewIntent(intent: Intent?) {

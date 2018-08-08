@@ -52,18 +52,22 @@ class AddOrEditAddressActivity : AppCompatActivity() {
 
         val toolbar = findViewById<android.support.v7.widget.Toolbar>(R.id.my_toolbar)
         setSupportActionBar(toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        title = ""
+        //supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        toolbar.findViewById<ImageButton>(R.id.back_button).setOnClickListener {
+            finish()
+        }
 
         setImageButtonClickListener()
-        if (intent.extras != null) {    // whether the intended query is an update request or not
+        toolbar.findViewById<TextView>(R.id.title).text = if (intent.extras != null) {    // whether the intended query is an update request or not
             isUpdateQuery = true
             inializeForm()
             position = (intent.extras["address"] as Bundle)["position"] as Int
-            title = "Update Address"
+            "Update Address"
 
         } else {
             //initializeFormTestingPurpose()  // for testing purpose
-            title = "Add Address"
+            "Add Address"
         }
     }
 

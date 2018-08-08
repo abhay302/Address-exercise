@@ -84,38 +84,6 @@ class DisplayAddressFragment : Fragment(), AddressAdapter.ShowPopupCallback {
         }
     }
 
-
-    /*fun updateList(address: Address, isChecked: Boolean) {
-        val pos = list.indexOfFirst { it.id == address.id }
-        Log.d("address received:", address.toString())
-        if (isChecked) {
-            val posOfCurrentDefaultAddress = list.indexOfFirst { it.id == getDefaultAddress(context!!) }
-            //Log.d("posCurrentDefault", posOfCurrentDefaultAddress.toString())
-            if (posOfCurrentDefaultAddress >= 0) {
-                recyclerView.adapter.notifyItemChanged(posOfCurrentDefaultAddress)
-            }
-            setDefaultAddress(context!!, address.id!!)
-            //Log.d("New default address is ", getDefaultAddress(context!!).toString())
-        } else {
-            //Log.d("Old default address is ", getDefaultAddress(context!!).toString())
-        }
-
-        //Log.d("newAddressPosition", pos.toString())
-        //Log.d("${address.id}", address.toString())
-        if (pos == -1) {                        // It means that address is not present in the list i.e. create query
-            //list.add(0, address)
-            list.add(0, address)
-            recyclerView.adapter.notifyItemInserted(0)
-            recyclerView.layoutManager.scrollToPosition(0)
-        } else {                                // It means that the address is already present in the list i.e. update query
-            list[pos] = address
-            recyclerView.adapter.notifyItemChanged(pos)
-        }
-        list.forEachIndexed { index, address ->
-            Log.d("$index", "$address")
-        }
-    }*/
-
     /**
      * The function will put the entries in the recycler view using the array of address received from the hosting activity.
      */
