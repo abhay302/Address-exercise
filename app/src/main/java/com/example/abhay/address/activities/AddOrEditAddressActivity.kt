@@ -118,8 +118,8 @@ class AddOrEditAddressActivity : AppCompatActivity() {
             firstname = name[0]
             lastname = if (name.size > 1) name[1] else null
             address1 = findViewById<EditText>(R.id.input_Address1).text.toString().trim()
-            address2 = findViewById<EditText>(R.id.input_Address2).text.toString().trim() +
-                    findViewById<EditText>(R.id.input_Landmark).text.toString().trim()
+            address2 = (findViewById<EditText>(R.id.input_Address2).text.toString().trim() + " " +
+                    findViewById<EditText>(R.id.input_Landmark).text.toString().trim()).trim()
             city = findViewById<EditText>(R.id.input_City).text.toString().trim()
             stateId = findViewById<EditText>(R.id.input_State).text.toString().trim().takeIf { it.isNotEmpty() }?.run {
                 val temp = filter { it.isDigit() }
@@ -239,15 +239,13 @@ class AddOrEditAddressActivity : AppCompatActivity() {
     fun addTextChangeListener(editTextId: Int, containerId: Int) {
         findViewById<EditText>(editTextId).addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
-
             }
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                findViewById<TextInputLayout>(containerId).error = null
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-
+                findViewById<TextInputLayout>(containerId).error = null
             }
         })
     }

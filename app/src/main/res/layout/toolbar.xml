@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="54dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:minHeight="?android:attr/actionBarSize"
     android:id="@+id/toolbar"
@@ -18,12 +18,12 @@
     app:contentInsetEnd="0dp">
 
     <android.support.v7.widget.AppCompatImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
         android:id="@+id/back_button"
-        android:src="@drawable/ic_arrow_right"
+        android:src="@drawable/ic_arrow_left"
         android:background="@color/colorPrimary"
-        android:layout_marginStart="12.75dp" />
+        android:layout_marginStart="7.75dp" />
 
     <TextView
         android:id="@+id/title"
@@ -31,6 +31,8 @@
         android:layout_height="wrap_content"
         android:textSize="15sp"
         android:textColor="#fff"
-        android:layout_marginStart="17.25dp" />
+        android:layout_marginStart="12.25dp"
+        android:text="hbshvbsuygvsu"
+        />
 
 </android.support.v7.widget.Toolbar>
