@@ -1,4 +1,4 @@
-package com.example.abhay.address.network
+package com.example.abhay.address.data
 
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
@@ -43,4 +43,12 @@ data class Address(
 
         @SerializedName("country_id")
         var countryId: Int? = null
-): Serializable
+
+) : Serializable {
+    companion object {
+        /**
+         * will contain the list of addresses
+         */
+        lateinit var list: MutableList<Address>
+    }
+}

@@ -8,9 +8,9 @@ import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import com.example.abhay.address.R
+import com.example.abhay.address.data.Address
 import com.example.abhay.address.fragments.BlankAddressFragment
 import com.example.abhay.address.fragments.DisplayAddressFragment
-import com.example.abhay.address.network.Address
 import com.example.abhay.address.network.RetrofitClient
 import retrofit2.Call
 import retrofit2.Callback
@@ -36,8 +36,6 @@ class BaseActivity : AppCompatActivity(), DisplayAddressFragment.EmptyListCallba
      */
     private var isRunning: Boolean = true
 
-    var list: Array<Address>? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_base)
@@ -60,14 +58,15 @@ class BaseActivity : AppCompatActivity(), DisplayAddressFragment.EmptyListCallba
             val address = intent.extras?.get("address") as Address
             val isChecked = intent.extras?.get("isChecked") as Boolean
             val position = intent.extras?.get("position") as Int?
-            if (list == null) {
-                //list?.add(address)
-                list = arrayOf(address)
-                changeFragment()
-            } else {
-                val fragment = supportFragmentManager.findFragmentByTag("display_address_fragment") as DisplayAddressFragment
-                fragment.updateList(address, isChecked, position)
+            if (Address.list.isEmpty()) {
+                with(supportFragmentManager.beginTransaction()) {
+                    replace(R.id.address_display_fragment_container, DisplayAddressFragment(), "display_address_fragment")
+                    commit()
+                }
             }
+            supportFragmentManager.executePendingTransactions()
+            val fragment = supportFragmentManager.findFragmentByTag("display_address_fragment") as DisplayAddressFragment
+            fragment.updateList(address, isChecked, position)
         }
     }
 
@@ -88,7 +87,6 @@ class BaseActivity : AppCompatActivity(), DisplayAddressFragment.EmptyListCallba
     /**
      * This function fetches the addresses from the server using Retrofit
      */
-
     private fun fetchData() {
         val call = RetrofitClient.client.getAllAddresses()
 
@@ -97,13 +95,13 @@ class BaseActivity : AppCompatActivity(), DisplayAddressFragment.EmptyListCallba
             override fun onResponse(call: Call<Array<Address>>?, response: Response<Array<Address>>?) {
                 Log.d("received", response.toString())
                 Log.d("data", response?.body().toString())
-                list = response?.body()
+                Address.list = response?.body()?.toMutableList() ?: mutableListOf()
+                //Log.d("addresses", Address.list.toString())
                 //Toast.makeText(this@BaseActivity, list?.size.toString(), Toast.LENGTH_SHORT).show()
 
-                list?.indices?.forEach {
-                    Log.d(it.toString(), list!![it].toString())
+                Address.list.indices.forEach {
+                    Log.d(it.toString(), Address.list[it].toString())
                 }
-                //changeFragment()
                 showFragment = ::changeFragment
                 if (isRunning) {
                     showFragment?.invoke()
@@ -120,15 +118,12 @@ class BaseActivity : AppCompatActivity(), DisplayAddressFragment.EmptyListCallba
     /**
      * This function will make the activity change a fragment depending upon whether the list is empty or not
      */
-
     private fun changeFragment() = with(supportFragmentManager.beginTransaction()) {
         //replace(R.id.address_display_fragment_container, BlankAddressFragment(), "blank_address_fragment")
-        if (list?.isEmpty() == true) {
+        if (Address.list.isEmpty()) {
             replace(R.id.address_display_fragment_container, BlankAddressFragment(), "blank_address_fragment")
         } else {
-            val bundle = Bundle().apply { putSerializable("addresses", list) }
-            val displayAddressFragment = DisplayAddressFragment().apply { arguments = bundle }
-            replace(R.id.address_display_fragment_container, displayAddressFragment, "display_address_fragment")
+            replace(R.id.address_display_fragment_container, DisplayAddressFragment(), "display_address_fragment")
         }
         commit()
         Unit
@@ -137,12 +132,10 @@ class BaseActivity : AppCompatActivity(), DisplayAddressFragment.EmptyListCallba
     /**
      * It is a callback method that the DisplayAddressFragment will call if on deletion of an element the list becomes empty
      */
-
     override fun notifyListIsEmpty() {
 
-        list = null
         with(supportFragmentManager.beginTransaction()) {
-            replace(R.id.address_display_fragment_container, BlankAddressFragment())
+            replace(R.id.address_display_fragment_container, BlankAddressFragment(), "blank_address_fragment")
             commit()
         }
     }

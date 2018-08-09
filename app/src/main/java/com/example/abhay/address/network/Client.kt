@@ -1,7 +1,8 @@
 package com.example.abhay.address.network
 
+import com.example.abhay.address.data.Address
+import com.example.abhay.address.data.DeleteActionReply
 import com.google.gson.JsonElement
-import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.http.*
 

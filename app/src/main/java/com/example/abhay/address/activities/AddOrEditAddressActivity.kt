@@ -11,8 +11,8 @@ import android.util.Log
 import android.view.View
 import android.widget.*
 import com.example.abhay.address.R
-import com.example.abhay.address.network.Address
-import com.example.abhay.address.network.ErrorReply
+import com.example.abhay.address.data.Address
+import com.example.abhay.address.data.ErrorReply
 import com.example.abhay.address.network.RetrofitClient
 import com.google.gson.Gson
 import com.google.gson.JsonElement
@@ -184,15 +184,6 @@ class AddOrEditAddressActivity : AppCompatActivity() {
      * This will set the error fields for the input fields which has some error
      */
     private fun setErrorFields(errors: ErrorReply.Errors?) {
-        /*if (errors?.city != null)
-            findViewById<EditText>(R.id.input_City).error = errors.city?.get(0)
-        if (errors?.address1 != null)
-            findViewById<TextInputLayout>(R.id.input_Address1_Container).error = errors.address1?.get(0)
-            //findViewById<EditText>(R.id.input_Address1).error = errors.address1?.get(0)
-        if (errors?.stateId != null)
-            findViewById<EditText>(R.id.input_State).error = errors.stateId?.get(0)
-        if (errors?.zipcode != null)
-            findViewById<EditText>(R.id.input_Zipcode).error = errors.zipcode?.get(0)*/
 
         if (errors?.city != null)
             findViewById<TextInputLayout>(R.id.input_City_Container).error = errors.city?.get(0)
@@ -208,11 +199,6 @@ class AddOrEditAddressActivity : AppCompatActivity() {
      * This will remove error fields from all the possibly erroneous fields before sending request to the server
      */
     private fun removeErrorFields() {
-        /*findViewById<EditText>(R.id.input_City).error = null
-        //findViewById<EditText>(R.id.input_Address1).error = null
-        findViewById<TextInputLayout>(R.id.input_Address1_Container).error = null
-        findViewById<EditText>(R.id.input_State).error = null
-        findViewById<EditText>(R.id.input_Zipcode).error = null*/
 
         findViewById<TextInputLayout>(R.id.input_City_Container).error = null
         findViewById<TextInputLayout>(R.id.input_Address1_Container).error = null

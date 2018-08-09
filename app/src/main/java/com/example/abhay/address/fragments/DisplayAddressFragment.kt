@@ -20,8 +20,8 @@ import com.example.abhay.address.R
 import com.example.abhay.address.activities.AddOrEditAddressActivity
 import com.example.abhay.address.activities.BaseActivity
 import com.example.abhay.address.adapters.AddressAdapter
-import com.example.abhay.address.network.Address
-import com.example.abhay.address.network.DeleteActionReply
+import com.example.abhay.address.data.Address
+import com.example.abhay.address.data.DeleteActionReply
 import com.example.abhay.address.network.RetrofitClient
 import com.google.gson.Gson
 import retrofit2.Call
@@ -90,7 +90,7 @@ class DisplayAddressFragment : Fragment(), AddressAdapter.ShowPopupCallback {
      * The function will put the entries in the recycler view using the array of address received from the hosting activity.
      */
     private fun populateList() {
-        list = (arguments?.get("addresses") as Array<Address>).toMutableList()
+        list = Address.list
         //Toast.makeText(activity, list.size.toString(), Toast.LENGTH_SHORT).show()
 
         recyclerView = activity!!.findViewById(R.id.display_address_recycler_view)

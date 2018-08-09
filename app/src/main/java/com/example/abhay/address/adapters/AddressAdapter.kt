@@ -9,10 +9,10 @@ import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
 import com.example.abhay.address.R
+import com.example.abhay.address.data.Address
 import com.example.abhay.address.fragments.DisplayAddressFragment
 import com.example.abhay.address.fragments.getDefaultAddress
 import com.example.abhay.address.fragments.posCurrentDefaultAddress
-import com.example.abhay.address.network.Address
 
 /**
  * It is an Adapter class which is used to put items in the Recycler view

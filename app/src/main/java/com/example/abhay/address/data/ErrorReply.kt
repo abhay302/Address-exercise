@@ -1,4 +1,4 @@
-package com.example.abhay.address.network
+package com.example.abhay.address.data
 
 import com.google.gson.annotations.SerializedName
 
