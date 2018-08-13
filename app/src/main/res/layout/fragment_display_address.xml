@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.DisplayAddressFragment">
+    tools:context=".controllers.display.DisplayAddressFragment">
 
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_centerInParent="true"
         android:visibility="gone" />
 
     <android.support.v7.widget.RecyclerView
@@ -20,16 +20,17 @@
         android:layout_height="match_parent" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/add_address_button_in_display_address_fragment"
+        android:id="@+id/add_address_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_marginBottom="19.75dp"
-        android:layout_marginEnd="21.75dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="@dimen/add_address_button_bottom_margin"
+        android:layout_marginEnd="@dimen/add_address_button_end_margin"
         android:scaleType="center"
-        android:theme="@style/MyAddButtonTheme"
-        app:fabCustomSize="53.75dp"
+        android:theme="@style/AddAddressButtonTheme"
+        app:fabCustomSize="@dimen/add_address_button_size"
         app:srcCompat="@drawable/add_address_icon"
-        app:elevation="0dp" />
+        app:elevation="@dimen/add_address_button_elevation" />
 
-</FrameLayout>
+</RelativeLayout>

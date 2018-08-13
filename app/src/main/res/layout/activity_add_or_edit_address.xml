@@ -27,17 +27,16 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingTop="@dimen/input_linear_layout_top_padding">
 
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/input_Name_Container"
                 android:layout_width="match_parent"
-                android:layout_height="72dp"
-                android:layout_marginEnd="35.75dp"
-                android:layout_marginStart="34.25dp"
-                android:layout_marginTop="25.5dp"
-                android:padding="0dp"
+                android:layout_height="@dimen/name_container_height"
+                android:layout_marginEnd="@dimen/name_container_end_margin"
+                android:layout_marginStart="@dimen/name_container_start_margin"
                 app:errorEnabled="true"
                 app:hintEnabled="false">
 
@@ -45,23 +44,19 @@
                     android:id="@+id/input_Name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Name"
+                    android:hint="@string/input_name_hint"
                     android:inputType="text"
-                    android:paddingBottom="15dp"
-                    android:paddingStart="11.75dp"
-                    android:textSize="17.5sp"
-                    app:backgroundTint="#979797" />
+                    android:theme="@style/InputFieldTheme"
+                    app:backgroundTint="@color/colorGray" />
             </android.support.design.widget.TextInputLayout>
 
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/input_Address1_Container"
                 android:layout_width="match_parent"
-                android:layout_height="78dp"
-                android:layout_marginTop="0.25dp"
-                android:layout_marginEnd="35.75dp"
-                android:layout_marginStart="34.375dp"
-                android:padding="0dp"
+                android:layout_height="@dimen/address1_container_height"
+                android:layout_marginEnd="@dimen/address1_container_end_margin"
+                android:layout_marginStart="@dimen/address1_container_start_margin"
                 app:errorEnabled="true"
                 app:hintEnabled="false">
 
@@ -69,23 +64,18 @@
                     android:id="@+id/input_Address1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Address Line 1"
-                    android:inputType="text"
-                    android:paddingBottom="15dp"
-                    android:paddingStart="11.625dp"
-                    android:textSize="17.5sp"
-                    app:backgroundTint="#979797" />
+                    android:hint="@string/input_address1_hint"
+                    android:theme="@style/InputFieldTheme"
+                    android:inputType="text" />
             </android.support.design.widget.TextInputLayout>
 
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/input_Address2_Container"
                 android:layout_width="match_parent"
-                android:layout_height="72dp"
-                android:layout_marginEnd="32.5dp"
-                android:layout_marginStart="37.5dp"
-                android:layout_marginTop="0dp"
-                android:padding="0dp"
+                android:layout_height="@dimen/address2_container_height"
+                android:layout_marginEnd="@dimen/address2_container_end_margin"
+                android:layout_marginStart="@dimen/address2_container_start_margin"
                 app:errorEnabled="true"
                 app:hintEnabled="false">
 
@@ -93,23 +83,18 @@
                     android:id="@+id/input_Address2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Address Line 2"
+                    android:hint="@string/input_address2_hint"
                     android:inputType="text"
-                    android:paddingBottom="15dp"
-                    android:paddingStart="11.75dp"
-                    android:textSize="17.5sp"
-                    app:backgroundTint="#979797" />
+                    android:theme="@style/InputFieldTheme" />
             </android.support.design.widget.TextInputLayout>
 
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/input_Landmark_Container"
                 android:layout_width="match_parent"
-                android:layout_height="72dp"
-                android:layout_marginEnd="32.5dp"
-                android:layout_marginStart="37.5dp"
-                android:layout_marginTop="5dp"
-                android:padding="0dp"
+                android:layout_height="@dimen/landmark_container_height"
+                android:layout_marginEnd="@dimen/landmark_container_end_margin"
+                android:layout_marginStart="@dimen/landmark_container_start_margin"
                 app:errorEnabled="true"
                 app:hintEnabled="false">
 
@@ -117,22 +102,18 @@
                     android:id="@+id/input_Landmark"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Landmark"
+                    android:hint="@string/input_landmark_hint"
                     android:inputType="text"
-                    android:paddingBottom="15dp"
-                    android:paddingStart="11.75dp"
-                    android:textSize="17.5sp"
-                    app:backgroundTint="#979797" />
+                    android:theme="@style/InputFieldTheme" />
             </android.support.design.widget.TextInputLayout>
 
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/input_City_Container"
                 android:layout_width="match_parent"
-                android:layout_height="78dp"
-                android:layout_marginEnd="32dp"
-                android:layout_marginStart="38dp"
-                android:padding="0dp"
+                android:layout_height="@dimen/city_container_height"
+                android:layout_marginEnd="@dimen/city_container_end_margin"
+                android:layout_marginStart="@dimen/city_container_start_margin"
                 app:errorEnabled="true"
                 app:hintEnabled="false">
 
@@ -140,23 +121,18 @@
                     android:id="@+id/input_City"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="City"
+                    android:hint="@string/input_city_hint"
                     android:inputType="text"
-                    android:paddingBottom="15dp"
-                    android:paddingStart="11.75dp"
-                    android:textSize="17.5sp"
-                    app:backgroundTint="#979797" />
+                    android:theme="@style/InputFieldTheme" />
             </android.support.design.widget.TextInputLayout>
 
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/input_State_Container"
                 android:layout_width="match_parent"
-                android:layout_height="78dp"
-                android:layout_marginEnd="28.75dp"
-                android:layout_marginStart="41.25dp"
-                android:layout_marginTop="0dp"
-                android:padding="0dp"
+                android:layout_height="@dimen/state_container_height"
+                android:layout_marginEnd="@dimen/state_container_end_margin"
+                android:layout_marginStart="@dimen/state_container_start_margin"
                 app:errorEnabled="true"
                 app:hintEnabled="false">
 
@@ -164,23 +140,18 @@
                     android:id="@+id/input_State"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="State"
+                    android:hint="@string/input_state_hint"
                     android:inputType="number"
-                    android:paddingBottom="15dp"
-                    android:paddingStart="11.75dp"
-                    android:textSize="17.5sp"
-                    app:backgroundTint="#979797" />
+                    android:theme="@style/InputFieldTheme" />
             </android.support.design.widget.TextInputLayout>
 
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/input_Zipcode_Container"
                 android:layout_width="match_parent"
-                android:layout_height="78dp"
-                android:layout_marginEnd="28.75dp"
-                android:layout_marginStart="41.25dp"
-                android:layout_marginTop="0dp"
-                android:padding="0dp"
+                android:layout_height="@dimen/zipcode_container_height"
+                android:layout_marginEnd="@dimen/zipcode_container_end_margin"
+                android:layout_marginStart="@dimen/zipcode_container_start_margin"
                 app:errorEnabled="true"
                 app:hintEnabled="false">
 
@@ -188,12 +159,9 @@
                     android:id="@+id/input_Zipcode"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Pincode"
+                    android:hint="@string/input_zipcode_hint"
                     android:inputType="number"
-                    android:paddingBottom="14dp"
-                    android:paddingStart="11.75dp"
-                    android:textSize="17.5sp"
-                    app:backgroundTint="#979797" />
+                    android:theme="@style/InputFieldTheme" />
             </android.support.design.widget.TextInputLayout>
 
 
@@ -201,24 +169,24 @@
                 android:id="@+id/checkBox_Make_Default_Address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="41.25dp"
-                android:layout_marginTop="20dp"
-                android:text="Make this my default address"
-                android:textColor="#9b9b9b"
-                android:textSize="15sp"
-                android:theme="@style/CustomCheckBox"
-                android:paddingStart="6.25dp" />
+                android:layout_marginStart="@dimen/default_address_maker_checkbox_start_margin"
+                android:layout_marginTop="@dimen/default_address_maker_checkbox_top_margin"
+                android:paddingStart="@dimen/default_address_maker_checkbox_start_padding"
+                android:text="@string/default_address_maker_checkbox_hint"
+                android:textColor="@color/defaultTextColor"
+                android:textSize="@dimen/default_address_maker_checkbox_text_size"
+                android:theme="@style/CustomCheckBox" />
 
             <ImageButton
                 android:id="@+id/send_button"
-                android:layout_width="125dp"
-                android:layout_height="37.5dp"
+                android:layout_width="@dimen/send_button_width"
+                android:layout_height="@dimen/send_button_height"
                 android:layout_gravity="end"
-                android:layout_marginBottom="64.75dp"
-                android:layout_marginEnd="17.75dp"
-                android:layout_marginTop="29.23dp"
+                android:layout_marginBottom="@dimen/send_button_bottom_margin"
+                android:layout_marginEnd="@dimen/send_button_end_margin"
+                android:layout_marginTop="@dimen/send_button_top_margin"
                 android:adjustViewBounds="true"
-                android:background="#ff9800"
+                android:background="@color/colorYellow"
                 android:src="@drawable/ic_arrow_right" />
 
         </LinearLayout>

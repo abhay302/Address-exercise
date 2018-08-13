@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< toolbar >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+    <dimen name="toolbar_height">54dp</dimen>
+    <dimen name="toolbar_content_start_inset">0dp</dimen>
+
+    <dimen name="toolbar_up_button_start_margin">7.75dp</dimen>
+    <dimen name="toolbar_up_button_width">25dp</dimen>
+    <dimen name="toolbar_up_button_height">25dp</dimen>
+
+    <dimen name="toolbar_title_start_margin">12.25dp</dimen>
+    <dimen name="toolbar_title_text_size">15sp</dimen>
+
+
+    <!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< custom list layout >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+    <dimen name="custom_layout_bottom_padding">20dp</dimen>
+
+    <dimen name="address_detail_height">60dp</dimen>
+    <dimen name="address_detail_start_margin">30dp</dimen>
+    <dimen name="address_detail_end_margin">45dp</dimen>
+    <dimen name="address_detail_top_margin">20dp</dimen>
+    <dimen name="address_detail_extra_line_spacing">1dp</dimen>
+    <dimen name="address_detail_text_size">15sp</dimen>
+
+    <dimen name="default_address_indicator_end_margin">12.25dp</dimen>
+
+    <dimen name="menu_icon_width">20dp</dimen>
+    <dimen name="menu_icon_height">20dp</dimen>
+    <dimen name="menu_icon_end_margin">7.5dp</dimen>
+
+
+    <!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< add address button >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+    <dimen name="add_address_button_end_margin">21.75dp</dimen>
+    <dimen name="add_address_button_bottom_margin">19.75dp</dimen>
+    <dimen name="add_address_button_size">53.75dp</dimen>
+    <dimen name="add_address_button_top_margin">7dp</dimen>
+    <dimen name="add_address_button_elevation">0dp</dimen>
+
+
+    <!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< blank address fragment >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+    <dimen name="empty_list_heading_height">23dp</dimen>
+    <dimen name="empty_list_heading_text_size">18.75sp</dimen>
+
+    <dimen name="empty_list_content_width">200dp</dimen>
+    <dimen name="empty_list_content_top_margin">18.75dp</dimen>
+    <dimen name="empty_list_content_size">15sp</dimen>
+
+
+    <!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Splash screen >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+    <dimen name="splash_logo_width">80dp</dimen>
+    <dimen name="splash_logo_height">82dp</dimen>
+
+
+    <!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< add/edit address activity >>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+    <dimen name="input_linear_layout_top_padding">20dp</dimen>
+
+    <dimen name="input_text_size">17.5sp</dimen>
+    <dimen name="input_bottom_padding">15dp</dimen>
+    <dimen name="input_start_padding">11.75dp</dimen>
+    <dimen name="input_end_padding">0dp</dimen>
+
+
+    <dimen name="name_container_height">78dp</dimen>
+    <dimen name="name_container_start_margin">34.25dp</dimen>
+    <dimen name="name_container_end_margin">35.75dp</dimen>
+
+
+    <dimen name="address1_container_height">78dp</dimen>
+    <dimen name="address1_container_start_margin">34.375dp</dimen>
+    <dimen name="address1_container_end_margin">35.75dp</dimen>
+
+
+    <dimen name="address2_container_height">78dp</dimen>
+    <dimen name="address2_container_start_margin">37.5dp</dimen>
+    <dimen name="address2_container_end_margin">32.5dp</dimen>
+
+
+    <dimen name="landmark_container_height">72dp</dimen>
+    <dimen name="landmark_container_start_margin">37.5dp</dimen>
+    <dimen name="landmark_container_end_margin">32.5dp</dimen>
+
+
+    <dimen name="city_container_height">78dp</dimen>
+    <dimen name="city_container_start_margin">38dp</dimen>
+    <dimen name="city_container_end_margin">32dp</dimen>
+
+
+    <dimen name="state_container_height">78dp</dimen>
+    <dimen name="state_container_start_margin">41.25dp</dimen>
+    <dimen name="state_container_end_margin">28.75dp</dimen>
+
+
+    <dimen name="zipcode_container_height">78dp</dimen>
+    <dimen name="zipcode_container_start_margin">41.25dp</dimen>
+    <dimen name="zipcode_container_end_margin">28.75dp</dimen>
+
+
+    <dimen name="default_address_maker_checkbox_start_margin">41.25dp</dimen>
+    <dimen name="default_address_maker_checkbox_top_margin">20dp</dimen>
+    <dimen name="default_address_maker_checkbox_start_padding">6.25dp</dimen>
+    <dimen name="default_address_maker_checkbox_text_size">15sp</dimen>
+
+
+    <dimen name="send_button_width">125dp</dimen>
+    <dimen name="send_button_height">37.5dp</dimen>
+    <dimen name="send_button_bottom_margin">64.75dp</dimen>
+    <dimen name="send_button_end_margin">17.75dp</dimen>
+    <dimen name="send_button_top_margin">29.23dp</dimen>
+
+</resources>

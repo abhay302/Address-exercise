@@ -3,18 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingBottom="20dp">
+    android:paddingBottom="@dimen/custom_layout_bottom_padding">
 
     <TextView
         android:id="@+id/address_detail"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="45dp"
-        android:layout_marginTop="20dp"
+        android:layout_height="@dimen/address_detail_height"
+        android:layout_marginStart="@dimen/address_detail_start_margin"
+        android:layout_marginEnd="@dimen/address_detail_end_margin"
+        android:layout_marginTop="@dimen/address_detail_top_margin"
         android:letterSpacing="0.05"
-        android:lineSpacingExtra="1dp"
-        android:textSize="15sp"
+        android:lineSpacingExtra="@dimen/address_detail_extra_line_spacing"
+        android:textSize="@dimen/address_detail_text_size"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:ellipsize="end" />
@@ -23,7 +23,7 @@
         android:id="@+id/default_address_indicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="12.52dp"
+        android:layout_marginEnd="@dimen/default_address_indicator_end_margin"
         android:button="@drawable/checkbox_selector"
         android:clickable="false"
         android:focusable="false"
@@ -31,10 +31,10 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageView
-        android:id="@+id/menu_selector"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginEnd="7.5dp"
+        android:id="@+id/menu_icon"
+        android:layout_width="@dimen/menu_icon_width"
+        android:layout_height="@dimen/menu_icon_height"
+        android:layout_marginEnd="@dimen/menu_icon_end_margin"
         android:clickable="true"
         android:focusable="true"
         app:layout_constraintEnd_toEndOf="parent"

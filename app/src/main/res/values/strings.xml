@@ -1,9 +1,30 @@
 <resources>
     <string name="app_name">Address</string>
 
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="empty_address_fragment_heading">Your address book is blank</string>
+    <string name="empty_address_fragment_content">Kindly add shipping / billing addresses and enjoy faster checkout</string>
+
+
+    <string name="input_name_hint">Name</string>
+    <string name="input_address1_hint">Address Line 1</string>
+    <string name="input_address2_hint">Address Line 2</string>
+    <string name="input_landmark_hint">Landmark</string>
+    <string name="input_city_hint">City</string>
+    <string name="input_state_hint">State</string>
+    <string name="input_zipcode_hint">Pincode</string>
+
+    <string name="default_phone_number">1234567890</string>
+
+
+    <string name="default_address_maker_checkbox_hint">Make this my default address</string>
+
+
+    <string name="address_list_display_activity_title">Addresses</string>
+    <string name="update_address_title">Update Address</string>
+    <string name="add_address_title">Add Address</string>
+
+
+    <string name="menu_item_edit_address">Edit address</string>
+    <string name="menu_item_remove_address">Remove address</string>
 </resources>

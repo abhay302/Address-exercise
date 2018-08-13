@@ -1,38 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="54dp"
+    android:layout_height="@dimen/toolbar_height"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:minHeight="?android:attr/actionBarSize"
     android:id="@+id/toolbar"
     android:theme="@style/ToolbarTheme"
-    app:titleTextAppearance="@style/Toolbar.TitleText"
-    app:titleTextColor="#fff"
-    android:contentInsetLeft="0dp"
-    android:contentInsetStart="0dp"
-    app:contentInsetLeft="0dp"
-    app:contentInsetStart="0dp"
-    android:contentInsetRight="0dp"
-    android:contentInsetEnd="0dp"
-    app:contentInsetRight="0dp"
-    app:contentInsetEnd="0dp">
+    app:contentInsetStart="@dimen/toolbar_content_start_inset">
 
     <android.support.v7.widget.AppCompatImageButton
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="@dimen/toolbar_up_button_width"
+        android:layout_height="@dimen/toolbar_up_button_height"
         android:id="@+id/back_button"
         android:src="@drawable/ic_arrow_left"
         android:background="@color/colorPrimary"
-        android:layout_marginStart="7.75dp" />
+        android:layout_marginStart="@dimen/toolbar_up_button_start_margin" />
 
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
-        android:textColor="#fff"
-        android:layout_marginStart="12.25dp"
-        android:text="hbshvbsuygvsu"
+        android:textSize="@dimen/toolbar_title_text_size"
+        android:textColor="@color/colorWhite"
+        android:layout_marginStart="@dimen/toolbar_title_start_margin"
         />
 
 </android.support.v7.widget.Toolbar>
