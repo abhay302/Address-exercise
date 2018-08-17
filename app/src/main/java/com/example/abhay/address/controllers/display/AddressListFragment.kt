@@ -37,7 +37,7 @@ var posCurrentDefaultAddress: Int? = null
  * Implements interface containing a callback method, which is called when a menu icon in a particular entry is clicked in the recycler view
  * indicating the fragment to open a popup menu.
  */
-class DisplayAddressFragment : Fragment(), AddressAdapter.ShowPopupCallback {
+class AddressListFragment : Fragment(), AddressAdapter.ShowPopupCallback {
 
     /**
      * This interface will be implemented by the hosting activity

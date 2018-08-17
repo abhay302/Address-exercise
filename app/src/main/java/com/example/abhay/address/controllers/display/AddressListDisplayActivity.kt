@@ -19,10 +19,10 @@ import java.util.*
  * This activity will display a list of addresses
  * It can display two types of fragments:
  * 1. EmptyAddressFragment: If no address is present
- * 2. DisplayAddressFragment: Will display a list of addresses in this fragment
+ * 2. AddressListFragment: Will display a list of addresses in this fragment
  */
 
-class AddressListDisplayActivity : AppCompatActivity(), DisplayAddressFragment.EmptyListCallback {
+class AddressListDisplayActivity : AppCompatActivity(), AddressListFragment.EmptyListCallback {
 
     /**
      * Will indicate whether the current activity is in resumed state
@@ -50,12 +50,12 @@ class AddressListDisplayActivity : AppCompatActivity(), DisplayAddressFragment.E
             val position = intent.extras?.get("position") as Int?
             if (Address.list.isEmpty()) {
                 with(supportFragmentManager.beginTransaction()) {
-                    replace(R.id.address_display_fragment_container, DisplayAddressFragment(), "display_address_fragment")
+                    replace(R.id.address_display_fragment_container, AddressListFragment(), "display_address_fragment")
                     commit()
                 }
             }
             supportFragmentManager.executePendingTransactions()
-            val fragment = supportFragmentManager.findFragmentByTag("display_address_fragment") as DisplayAddressFragment
+            val fragment = supportFragmentManager.findFragmentByTag("display_address_fragment") as AddressListFragment
             fragment.updateList(address, isChecked, position)
         }
     }
@@ -109,14 +109,14 @@ class AddressListDisplayActivity : AppCompatActivity(), DisplayAddressFragment.E
         if (Address.list.isEmpty())
             add(R.id.address_display_fragment_container, EmptyAddressFragment(), "blank_address_fragment")
         else
-            add(R.id.address_display_fragment_container, DisplayAddressFragment(), "display_address_fragment")
+            add(R.id.address_display_fragment_container, AddressListFragment(), "display_address_fragment")
 
         commit()
         Unit
     }
 
     /**
-     * It is a callback method that the DisplayAddressFragment will call if on deletion of an element the list becomes empty
+     * It is a callback method that the AddressListFragment will call if on deletion of an element the list becomes empty
      */
     override fun notifyListIsEmpty() {
 

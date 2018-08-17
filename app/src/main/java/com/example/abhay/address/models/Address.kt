@@ -32,12 +32,6 @@ data class Address(
         @SerializedName("phone")
         var phone: String? = null,
 
-        /**
-         * Api error field
-         */
-        /*@SerializedName("state_name")
-        var stateName: String? = null,*/
-
         @SerializedName("alternative_phone")
         var alternativePhone: String? = null,
 
