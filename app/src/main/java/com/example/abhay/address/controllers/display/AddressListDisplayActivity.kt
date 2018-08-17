@@ -5,12 +5,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
-import android.widget.ImageButton
-import android.widget.TextView
 import android.widget.Toast
 import com.example.abhay.address.R
 import com.example.abhay.address.api.RetrofitClient
 import com.example.abhay.address.models.Address
+import kotlinx.android.synthetic.main.activity_address_list_display.*
+import kotlinx.android.synthetic.main.toolbar.view.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -36,13 +36,13 @@ class AddressListDisplayActivity : AppCompatActivity(), AddressListFragment.Empt
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_address_list_display)
         fetchData()
-        val toolbar = findViewById<android.support.v7.widget.Toolbar>(R.id.my_toolbar)
+        val toolbar = my_toolbar as android.support.v7.widget.Toolbar
         setSupportActionBar(toolbar)
         title = null
-        toolbar.findViewById<ImageButton>(R.id.back_button).setOnClickListener {
+        toolbar.back_button.setOnClickListener {
             finish()
         }
-        toolbar.findViewById<TextView>(R.id.title).text = getString(R.string.address_list_display_activity_title)
+        toolbar.toolbar_title.text = getString(R.string.address_list_display_activity_title)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {

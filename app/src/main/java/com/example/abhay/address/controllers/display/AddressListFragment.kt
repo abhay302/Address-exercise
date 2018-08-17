@@ -4,7 +4,6 @@ import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.FloatingActionButton
 import android.support.v4.app.Fragment
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
@@ -14,7 +13,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
-import android.widget.ProgressBar
 import android.widget.Toast
 import com.example.abhay.address.R
 import com.example.abhay.address.api.RetrofitClient
@@ -23,6 +21,7 @@ import com.example.abhay.address.models.Address
 import com.example.abhay.address.models.DeleteActionReply
 import com.example.abhay.address.viewhelpers.AddressAdapter
 import com.google.gson.Gson
+import kotlinx.android.synthetic.main.fragment_address_list.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -50,13 +49,13 @@ class AddressListFragment : Fragment(), AddressAdapter.ShowPopupCallback {
     /**
      * will hold the reference to the address list
      */
-    lateinit var list: MutableList<Address>
+    private lateinit var list: MutableList<Address>
 
-    lateinit var recyclerView: RecyclerView
+    private lateinit var recyclerView: RecyclerView
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_display_address, container, false)
+        return inflater.inflate(R.layout.fragment_address_list, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -92,7 +91,7 @@ class AddressListFragment : Fragment(), AddressAdapter.ShowPopupCallback {
     private fun populateList() {
         list = Address.list
 
-        recyclerView = activity!!.findViewById(R.id.display_address_recycler_view)
+        recyclerView = activity!!.display_address_recycler_view
         recyclerView.layoutManager = LinearLayoutManager(activity)
         recyclerView.adapter = AddressAdapter(list, this)
 
@@ -169,7 +168,7 @@ class AddressListFragment : Fragment(), AddressAdapter.ShowPopupCallback {
     private fun sendDeleteRequest(id: Int, position: Int) {
         val holder = recyclerView.findViewHolderForAdapterPosition(position) as AddressAdapter.AddressHolder
         holder.imageView.isClickable = false
-        activity?.findViewById<ProgressBar>(R.id.progressBar)?.visibility = View.VISIBLE
+        activity?.progressBar?.visibility = View.VISIBLE
 
 
         val call = RetrofitClient.client.deleteAddress(id)
@@ -195,13 +194,13 @@ class AddressListFragment : Fragment(), AddressAdapter.ShowPopupCallback {
                             ?: getString(R.string.retrofit_delete_action_default_failure_message), Toast.LENGTH_LONG).show()
                 }
                 holder.imageView.isClickable = true
-                activity?.findViewById<ProgressBar>(R.id.progressBar)?.visibility = View.GONE
+                activity?.progressBar?.visibility = View.GONE
             }
 
             override fun onFailure(call: Call<DeleteActionReply>?, t: Throwable?) {
                 Toast.makeText(activity, getString(R.string.retrofit_default_failure_message), Toast.LENGTH_LONG).show()
                 holder.imageView.isClickable = true
-                activity?.findViewById<ProgressBar>(R.id.progressBar)?.visibility = View.GONE
+                activity?.progressBar?.visibility = View.GONE
             }
 
         })
@@ -211,7 +210,7 @@ class AddressListFragment : Fragment(), AddressAdapter.ShowPopupCallback {
      * This function will be called when the user clicks the add_address_button
      */
     private fun addAddressButtonClickListener() {
-        activity?.findViewById<FloatingActionButton>(R.id.add_address_button)?.setOnClickListener {
+        activity?.add_address_button?.setOnClickListener {
             activity?.startActivityForResult(Intent(activity, AddOrEditAddressActivity::class.java), ADD_OR_EDIT_ADDRESS_REQUEST_CODE)
         }
     }

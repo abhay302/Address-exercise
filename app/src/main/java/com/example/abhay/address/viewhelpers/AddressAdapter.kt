@@ -13,6 +13,7 @@ import com.example.abhay.address.controllers.display.AddressListFragment
 import com.example.abhay.address.controllers.display.getDefaultAddress
 import com.example.abhay.address.controllers.display.posCurrentDefaultAddress
 import com.example.abhay.address.models.Address
+import kotlinx.android.synthetic.main.list_item_custom_layout.view.*
 
 /**
  * It is an Adapter class for the Recycler view
@@ -51,9 +52,9 @@ class AddressAdapter(private val list: MutableList<Address>, private val fragmen
     }
 
     class AddressHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val textView: TextView = view.findViewById(R.id.address_detail)
-        val checkBox: CheckBox = view.findViewById(R.id.default_address_indicator)
-        val imageView: ImageView = view.findViewById(R.id.menu_icon)
+        val textView: TextView = view.address_detail
+        val checkBox: CheckBox = view.default_address_indicator
+        val imageView: ImageView = view.menu_icon
     }
 
     /**

@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.example.abhay.address.controllers.splash.SplashScreen"
+            android:name=".controllers.splash.SplashScreen"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,12 +20,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.abhay.address.controllers.display.AddressListDisplayActivity"
-            android:parentActivityName="com.example.abhay.address.controllers.splash.SplashScreen"
+            android:name=".controllers.display.AddressListDisplayActivity"
+            android:parentActivityName=".controllers.splash.SplashScreen"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.example.abhay.address.controllers.change.AddOrEditAddressActivity"
-            android:parentActivityName="com.example.abhay.address.controllers.display.AddressListDisplayActivity"
+            android:name=".controllers.change.AddOrEditAddressActivity"
+            android:parentActivityName=".controllers.display.AddressListDisplayActivity"
             android:screenOrientation="portrait" />
 
     </application>

@@ -17,7 +17,7 @@
         android:layout_marginStart="@dimen/toolbar_up_button_start_margin" />
 
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/toolbar_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/toolbar_title_text_size"
