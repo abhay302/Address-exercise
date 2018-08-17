@@ -23,7 +23,6 @@
         <activity
             android:name="com.example.abhay.address.controllers.display.AddressListDisplayActivity"
             android:label="Addresses"
-            android:launchMode="singleTop"
             android:parentActivityName="com.example.abhay.address.controllers.splash.SplashScreen"
             android:screenOrientation="portrait" />
         <activity

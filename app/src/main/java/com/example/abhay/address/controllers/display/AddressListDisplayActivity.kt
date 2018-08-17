@@ -1,5 +1,6 @@
 package com.example.abhay.address.controllers.display
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -42,21 +43,22 @@ class AddressListDisplayActivity : AppCompatActivity(), AddressListFragment.Empt
         toolbar.findViewById<TextView>(R.id.title).text = getString(R.string.address_list_display_activity_title)
     }
 
-    override fun onNewIntent(intent: Intent?) {
-        super.onNewIntent(intent)
-        if (intent?.extras?.get("address") != null) {
-            val address = intent.extras?.get("address") as Address
-            val isChecked = intent.extras?.get("isChecked") as Boolean
-            val position = intent.extras?.get("position") as Int?
-            if (Address.list.isEmpty()) {
-                with(supportFragmentManager.beginTransaction()) {
-                    replace(R.id.address_display_fragment_container, AddressListFragment(), "display_address_fragment")
-                    commit()
+    override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {
+        if (requestCode == 123 && resultCode == Activity.RESULT_OK) {
+            if (intent?.extras?.get("address") != null) {
+                val address = intent.extras?.get("address") as Address
+                val isChecked = intent.extras?.get("isChecked") as Boolean
+                val position = intent.extras?.get("position") as Int?
+                if (Address.list.isEmpty()) {
+                    with(supportFragmentManager.beginTransaction()) {
+                        replace(R.id.address_display_fragment_container, AddressListFragment(), "display_address_fragment")
+                        commit()
+                    }
                 }
+                supportFragmentManager.executePendingTransactions()
+                val fragment = supportFragmentManager.findFragmentByTag("display_address_fragment") as AddressListFragment
+                fragment.updateList(address, isChecked, position)
             }
-            supportFragmentManager.executePendingTransactions()
-            val fragment = supportFragmentManager.findFragmentByTag("display_address_fragment") as AddressListFragment
-            fragment.updateList(address, isChecked, position)
         }
     }
 

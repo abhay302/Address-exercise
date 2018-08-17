@@ -1,5 +1,6 @@
 package com.example.abhay.address.controllers.change
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -154,14 +155,14 @@ class AddOrEditAddressActivity : AppCompatActivity() {
                         Timer().schedule(object : TimerTask() {
                             override fun run() {
                                 if (isRunning) {
-                                    startActivity(Intent(this@AddOrEditAddressActivity, AddressListDisplayActivity::class.java).apply {
-                                        putExtra("address", address)
-                                        putExtra("isChecked", this@AddOrEditAddressActivity.findViewById<CheckBox>(R.id.checkBox_Make_Default_Address).isChecked)
-                                        putExtra("position", position)
-                                        addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                                    })
-                                    this@AddOrEditAddressActivity.finish()
                                     cancel()
+                                    setResult(Activity.RESULT_OK,
+                                            Intent(this@AddOrEditAddressActivity, AddressListDisplayActivity::class.java).apply {
+                                                putExtra("address", address)
+                                                putExtra("isChecked", this@AddOrEditAddressActivity.findViewById<CheckBox>(R.id.checkBox_Make_Default_Address).isChecked)
+                                                putExtra("position", position)
+                                            })
+                                    this@AddOrEditAddressActivity.finish()
                                 }
                             }
                         }, 0, 1)
