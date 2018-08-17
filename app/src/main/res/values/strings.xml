@@ -49,4 +49,7 @@
     <!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Miscellaneous >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
     <string name="default_address_maker_checkbox_hint">Make this my default address</string>
     <string name="default_phone_number">1234567890</string>
+    <string name="list_item_menu_icon_description">menu icon</string>
+    <string name="splash_logo_description">splash logo</string>
+    <string name="send_button_description">send button</string>
 </resources>

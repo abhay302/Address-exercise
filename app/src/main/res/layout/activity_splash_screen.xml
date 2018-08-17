@@ -13,6 +13,7 @@
         android:layout_height="@dimen/splash_logo_height"
         android:layout_gravity="center"
         android:keepScreenOn="true"
-        app:srcCompat="@drawable/splash_screen_image" />
+        app:srcCompat="@drawable/splash_screen_image"
+        android:contentDescription="@string/splash_logo_description" />
 
 </FrameLayout>

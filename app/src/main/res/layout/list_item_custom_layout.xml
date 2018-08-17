@@ -39,5 +39,6 @@
         android:focusable="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/address_detail"
-        app:srcCompat="@drawable/popup_menu_icon" />
+        app:srcCompat="@drawable/popup_menu_icon"
+        android:contentDescription="@string/list_item_menu_icon_description" />
 </android.support.constraint.ConstraintLayout>

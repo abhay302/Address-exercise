@@ -99,6 +99,7 @@
     <dimen name="default_address_maker_checkbox_start_margin">41.25dp</dimen>
     <dimen name="default_address_maker_checkbox_top_margin">0dp</dimen>
     <dimen name="default_address_maker_checkbox_start_padding">6.25dp</dimen>
+    <dimen name="default_address_maker_checkbox_end_padding">0dp</dimen>
     <dimen name="default_address_maker_checkbox_text_size">15sp</dimen>
 
 

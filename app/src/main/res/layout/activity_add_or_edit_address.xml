@@ -172,6 +172,7 @@
                 android:layout_marginStart="@dimen/default_address_maker_checkbox_start_margin"
                 android:layout_marginTop="@dimen/default_address_maker_checkbox_top_margin"
                 android:paddingStart="@dimen/default_address_maker_checkbox_start_padding"
+                android:paddingEnd="@dimen/default_address_maker_checkbox_end_padding"
                 android:text="@string/default_address_maker_checkbox_hint"
                 android:textColor="@color/defaultTextColor"
                 android:textSize="@dimen/default_address_maker_checkbox_text_size"
@@ -187,7 +188,8 @@
                 android:layout_marginTop="@dimen/send_button_top_margin"
                 android:adjustViewBounds="true"
                 android:background="@color/colorYellow"
-                android:src="@drawable/ic_arrow_right" />
+                android:src="@drawable/ic_arrow_right"
+                android:contentDescription="@string/send_button_description" />
 
         </LinearLayout>
 
