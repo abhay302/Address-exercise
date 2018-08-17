@@ -141,7 +141,7 @@ class AddressListFragment : Fragment(), AddressAdapter.ShowPopupCallback {
         val intent = Intent(activity, AddOrEditAddressActivity::class.java).apply {
             putExtra("address", bundle)
         }
-        activity?.startActivityForResult(intent, 123)
+        activity?.startActivityForResult(intent, ADD_OR_EDIT_ADDRESS_REQUEST_CODE)
     }
 
     /**
@@ -212,7 +212,7 @@ class AddressListFragment : Fragment(), AddressAdapter.ShowPopupCallback {
      */
     private fun addAddressButtonClickListener() {
         activity?.findViewById<FloatingActionButton>(R.id.add_address_button)?.setOnClickListener {
-            activity?.startActivityForResult(Intent(activity, AddOrEditAddressActivity::class.java), 123)
+            activity?.startActivityForResult(Intent(activity, AddOrEditAddressActivity::class.java), ADD_OR_EDIT_ADDRESS_REQUEST_CODE)
         }
     }
 }

@@ -17,7 +17,7 @@ import com.example.abhay.address.models.Address
 /**
  * It is an Adapter class for the Recycler view
  */
-class AddressAdapter(private val list: MutableList<Address>, private val listFragment: AddressListFragment) : RecyclerView.Adapter<AddressAdapter.AddressHolder>() {
+class AddressAdapter(private val list: MutableList<Address>, private val fragment: AddressListFragment) : RecyclerView.Adapter<AddressAdapter.AddressHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AddressHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.list_item_custom_layout, parent, false)
@@ -34,17 +34,17 @@ class AddressAdapter(private val list: MutableList<Address>, private val listFra
                 .plus(address.city?.takeIf { it.isNotBlank() }?.plus(". ") ?: "").plus("\n")
                 .plus(address.zipcode ?: "")
 
-        if (address.id == getDefaultAddress(listFragment.context!!)) {
+        if (address.id == getDefaultAddress(fragment.context!!)) {
             holder.checkBox.isChecked = true
             posCurrentDefaultAddress = holder.adapterPosition
-            Log.d(position.toString(), getDefaultAddress(listFragment.context!!).toString())
+            Log.d(position.toString(), getDefaultAddress(fragment.context!!).toString())
         } else {
             holder.checkBox.isChecked = false
         }
 
         holder.imageView.setOnClickListener {
             Log.d(position.toString(), "menu icon clicked")
-            listFragment.showPopup(address, holder.adapterPosition, holder.imageView)
+            fragment.showPopup(address, holder.adapterPosition, holder.imageView)
         }
 
         Log.d("Inside onBindViewHolder", position.toString())
@@ -57,7 +57,7 @@ class AddressAdapter(private val list: MutableList<Address>, private val listFra
     }
 
     /**
-     * It is used to notify a parent listFragment that a menu icon is clicked
+     * It is used to notify the AddressListFragment that a menu icon is clicked
      */
     interface ShowPopupCallback {
         fun showPopup(address: Address, position: Int, view: View)

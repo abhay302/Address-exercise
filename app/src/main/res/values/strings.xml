@@ -1,11 +1,12 @@
 <resources>
     <string name="app_name">Address</string>
 
-
+    <!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Empty address fragment >>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
     <string name="empty_address_fragment_heading">Your address book is blank</string>
     <string name="empty_address_fragment_content">Kindly add shipping / billing addresses and enjoy faster checkout</string>
 
 
+    <!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< input hints >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
     <string name="input_name_hint">Name</string>
     <string name="input_address1_hint">Address Line 1</string>
     <string name="input_address2_hint">Address Line 2</string>
@@ -14,29 +15,38 @@
     <string name="input_state_hint">State</string>
     <string name="input_zipcode_hint">Pincode</string>
 
-    <string name="default_phone_number">1234567890</string>
+
+    <!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< input error messages >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+    <string name="input_default_empty_field_error_message">can\'t be blank</string>
+    <string name="input_state_not_digit_error_message">state must contain only digits</string>
 
 
-    <string name="default_address_maker_checkbox_hint">Make this my default address</string>
-
-
+    <!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< activity titles >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
     <string name="address_list_display_activity_title">Addresses</string>
     <string name="update_address_title">Update Address</string>
     <string name="add_address_title">Add Address</string>
 
 
+    <!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< menu items >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
     <string name="menu_item_edit_address">Edit address</string>
     <string name="menu_item_remove_address">Remove address</string>
 
 
+    <!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< alert dialog contents >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
     <string name="delete_address_alert_dialog_title">Alert!!!</string>
     <string name="delete_address_alert_dialog_message">Do you really want to delete this address?</string>
     <string name="delete_address_alert_dialog_pos_button">Yes</string>
     <string name="delete_address_alert_dialog_neg_button">No</string>
 
 
+    <!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< network failure/error messages >>>>>>>>>>>>>>>>>>>>>>>> -->
     <string name="retrofit_default_failure_message">error occurred</string>
     <string name="retrofit_error_message">error occurred</string>
     <string name="retrofit_delete_action_default_failure_message">Problem in deletion</string>
     <string name="retrofit_default_error404_message">Address not found</string>
+
+
+    <!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Miscellaneous >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+    <string name="default_address_maker_checkbox_hint">Make this my default address</string>
+    <string name="default_phone_number">1234567890</string>
 </resources>

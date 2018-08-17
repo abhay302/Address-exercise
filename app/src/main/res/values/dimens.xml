@@ -52,12 +52,13 @@
 
 
     <!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< add/edit address activity >>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
-    <dimen name="input_linear_layout_top_padding">20dp</dimen>
+    <dimen name="input_linear_layout_top_padding">26dp</dimen>
 
     <dimen name="input_text_size">17.5sp</dimen>
     <dimen name="input_bottom_padding">15dp</dimen>
     <dimen name="input_start_padding">11.75dp</dimen>
     <dimen name="input_end_padding">0dp</dimen>
+    <dimen name="input_height">45dp</dimen>
 
 
     <dimen name="name_container_height">78dp</dimen>
@@ -96,7 +97,7 @@
 
 
     <dimen name="default_address_maker_checkbox_start_margin">41.25dp</dimen>
-    <dimen name="default_address_maker_checkbox_top_margin">20dp</dimen>
+    <dimen name="default_address_maker_checkbox_top_margin">0dp</dimen>
     <dimen name="default_address_maker_checkbox_start_padding">6.25dp</dimen>
     <dimen name="default_address_maker_checkbox_text_size">15sp</dimen>
 

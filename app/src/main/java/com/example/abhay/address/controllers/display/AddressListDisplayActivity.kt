@@ -16,6 +16,8 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
 
+const val ADD_OR_EDIT_ADDRESS_REQUEST_CODE = 250
+
 /**
  * This activity will display a list of addresses
  * It can display two types of fragments:
@@ -44,7 +46,7 @@ class AddressListDisplayActivity : AppCompatActivity(), AddressListFragment.Empt
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {
-        if (requestCode == 123 && resultCode == Activity.RESULT_OK) {
+        if (requestCode == ADD_OR_EDIT_ADDRESS_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
             if (intent?.extras?.get("address") != null) {
                 val address = intent.extras?.get("address") as Address
                 val isChecked = intent.extras?.get("isChecked") as Boolean

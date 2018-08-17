@@ -16,6 +16,7 @@ import com.example.abhay.address.api.RetrofitClient
 import com.example.abhay.address.controllers.display.AddressListDisplayActivity
 import com.example.abhay.address.models.Address
 import com.example.abhay.address.models.ErrorReply
+import com.example.abhay.address.models.Errors
 import com.google.gson.Gson
 import com.google.gson.JsonElement
 import retrofit2.Call
@@ -101,15 +102,17 @@ class AddOrEditAddressActivity : AppCompatActivity() {
     private fun setImageButtonClickListener() {
         findViewById<ImageButton>(R.id.send_button).setOnClickListener {
             removeErrorFields()
-            createRequestObject()
-            findViewById<ProgressBar>(R.id.progressBar).visibility = View.VISIBLE
-            call = if (isUpdateQuery) {
-                RetrofitClient.client.updateAddress(id, requestObject)
-            } else {
-                RetrofitClient.client.createAddress(requestObject)
+            if (validateInput()) {
+                createRequestObject()
+                findViewById<ProgressBar>(R.id.progressBar).visibility = View.VISIBLE
+                call = if (isUpdateQuery) {
+                    RetrofitClient.client.updateAddress(id, requestObject)
+                } else {
+                    RetrofitClient.client.createAddress(requestObject)
+                }
+                sendRequest()
+                it.isClickable = false
             }
-            sendRequest()
-            it.isClickable = false
         }
     }
 
@@ -125,12 +128,7 @@ class AddOrEditAddressActivity : AppCompatActivity() {
             address2 = (findViewById<EditText>(R.id.input_Address2).text.toString().trim() + " " +
                     findViewById<EditText>(R.id.input_Landmark).text.toString().trim()).trim()
             city = findViewById<EditText>(R.id.input_City).text.toString().trim()
-            stateId = findViewById<EditText>(R.id.input_State).text.toString().trim().takeIf { it.isNotEmpty() }?.run {
-                if (all { it.isDigit() })
-                    toInt()
-                else
-                    Int.MIN_VALUE
-            }
+            stateId = findViewById<EditText>(R.id.input_State).text.toString().trim().takeIf { it.isNotEmpty() }?.toInt()
             zipcode = findViewById<EditText>(R.id.input_Zipcode).text.toString().trim()
 
             countryId = 105
@@ -190,7 +188,7 @@ class AddOrEditAddressActivity : AppCompatActivity() {
     /**
      * This will set the error fields for the input fields which has some error
      */
-    private fun setErrorFields(errors: ErrorReply.Errors?) {
+    private fun setErrorFields(errors: Errors?) {
 
         if (errors?.city != null)
             findViewById<TextInputLayout>(R.id.input_City_Container).error = errors.city?.get(0)
@@ -258,5 +256,57 @@ class AddOrEditAddressActivity : AppCompatActivity() {
                 findViewById<TextInputLayout>(containerId).error = null
             }
         })
+    }
+
+    private fun validateInput(): Boolean {
+        /**
+         * initially assume that all the given input fields are error free
+         */
+        var isErrorFree = true
+
+        val errors = Errors()
+
+        val errorMessages = mutableListOf<String>()         // created mutable list to support more than one validation messages for an input field
+        findViewById<EditText>(R.id.input_Address1).text.toString().apply {
+            if (isBlank())
+                errorMessages.add(getString(R.string.input_default_empty_field_error_message))
+            if (errorMessages.isNotEmpty()) {
+                errors.address1 = errorMessages.toTypedArray()
+                isErrorFree = false
+            }
+            errorMessages.clear()
+        }
+        findViewById<EditText>(R.id.input_City).text.toString().apply {
+            if (isBlank())
+                errorMessages.add(getString(R.string.input_default_empty_field_error_message))
+            if (errorMessages.isNotEmpty()) {
+                errors.city = errorMessages.toTypedArray()
+                isErrorFree = false
+            }
+            errorMessages.clear()
+        }
+        findViewById<EditText>(R.id.input_State).text.toString().apply {
+            if (isBlank())
+                errorMessages.add(getString(R.string.input_default_empty_field_error_message))
+            if (any { !it.isDigit() })
+                errorMessages.add(getString(R.string.input_state_not_digit_error_message))
+            if (errorMessages.isNotEmpty()) {
+                errors.stateId = errorMessages.toTypedArray()
+                isErrorFree = false
+            }
+            errorMessages.clear()
+        }
+        findViewById<EditText>(R.id.input_Zipcode).text.toString().apply {
+            if (isBlank())
+                errorMessages.add(getString(R.string.input_default_empty_field_error_message))
+            if (errorMessages.isNotEmpty()) {
+                errors.zipcode = errorMessages.toTypedArray()
+                isErrorFree = false
+            }
+            errorMessages.clear()
+        }
+        if (!isErrorFree)
+            setErrorFields(errors)
+        return isErrorFree
     }
 }

@@ -43,7 +43,7 @@
                 <android.support.v7.widget.AppCompatEditText
                     android:id="@+id/input_Name"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/input_height"
                     android:hint="@string/input_name_hint"
                     android:inputType="text"
                     android:theme="@style/InputFieldTheme"
@@ -63,7 +63,7 @@
                 <android.support.v7.widget.AppCompatEditText
                     android:id="@+id/input_Address1"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/input_height"
                     android:hint="@string/input_address1_hint"
                     android:theme="@style/InputFieldTheme"
                     android:inputType="text" />
@@ -82,7 +82,7 @@
                 <android.support.v7.widget.AppCompatEditText
                     android:id="@+id/input_Address2"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/input_height"
                     android:hint="@string/input_address2_hint"
                     android:inputType="text"
                     android:theme="@style/InputFieldTheme" />
@@ -101,7 +101,7 @@
                 <android.support.v7.widget.AppCompatEditText
                     android:id="@+id/input_Landmark"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/input_height"
                     android:hint="@string/input_landmark_hint"
                     android:inputType="text"
                     android:theme="@style/InputFieldTheme" />
@@ -120,7 +120,7 @@
                 <android.support.v7.widget.AppCompatEditText
                     android:id="@+id/input_City"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/input_height"
                     android:hint="@string/input_city_hint"
                     android:inputType="text"
                     android:theme="@style/InputFieldTheme" />
@@ -139,7 +139,7 @@
                 <android.support.v7.widget.AppCompatEditText
                     android:id="@+id/input_State"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/input_height"
                     android:hint="@string/input_state_hint"
                     android:inputType="number"
                     android:theme="@style/InputFieldTheme" />
@@ -158,7 +158,7 @@
                 <android.support.v7.widget.AppCompatEditText
                     android:id="@+id/input_Zipcode"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/input_height"
                     android:hint="@string/input_zipcode_hint"
                     android:inputType="number"
                     android:theme="@style/InputFieldTheme" />
