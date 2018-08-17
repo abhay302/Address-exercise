@@ -153,20 +153,20 @@ class AddressListFragment : Fragment(), AddressAdapter.ShowPopupCallback {
         builder.setMessage("Do you really want to delete this address?")
                 .setTitle("Alert!!!")
                 .setCancelable(true)
-                .setPositiveButton("Yes") { dialogInterface, i ->
+                .setPositiveButton("Yes") { dialogInterface, _ ->
                     Log.d(position.toString(), "delete request at")
                     sendDeleteRequest(address.id!!, position)
 
                     dialogInterface.cancel()
 
-                }.setNegativeButton("No") { dialogInterface, i ->
+                }.setNegativeButton("No") { dialogInterface, _ ->
                     dialogInterface.cancel()
                 }
         val dialog = builder.create()
         dialog.show()
     }
 
-    fun sendDeleteRequest(id: Int, position: Int) {
+    private fun sendDeleteRequest(id: Int, position: Int) {
         val holder = recyclerView.findViewHolderForAdapterPosition(position) as AddressAdapter.AddressHolder
         holder.imageView.isClickable = false
         activity?.findViewById<ProgressBar>(R.id.progressBar)?.visibility = View.VISIBLE

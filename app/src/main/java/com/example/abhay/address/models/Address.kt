@@ -32,12 +32,6 @@ data class Address(
         @SerializedName("phone")
         var phone: String? = null,
 
-        @SerializedName("alternative_phone")
-        var alternativePhone: String? = null,
-
-        @SerializedName("company")
-        var company: String? = null,
-
         @SerializedName("state_id")
         var stateId: Int? = null,
 

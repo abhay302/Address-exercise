@@ -9,7 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory
  * This class will create a retrofit client which will hit the API.
  */
 object RetrofitClient {
-    val client by lazy {
+    val client: ApiService by lazy {
         val logging = HttpLoggingInterceptor()
         logging.level = HttpLoggingInterceptor.Level.BODY
 

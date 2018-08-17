@@ -23,20 +23,10 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="13ff42e7-e290-409b-9d36-65a633604330" name="Default" comment="renamed class DisplayAddressFragment to AddressListFragment">
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/resourceHashesCache.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/resourceHashesCache.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/javaCompile.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/javaCompile.lock" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskHistory.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+    <list default="true" id="13ff42e7-e290-409b-9d36-65a633604330" name="Default" comment="removed warnings">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/abhay/address/controllers/display/AddressListDisplayActivity.kt" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/abhay/address/controllers/display/AddressListDisplayActivity.kt" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/abhay/address/controllers/display/DisplayAddressFragment.kt" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/abhay/address/controllers/display/AddressListFragment.kt" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/abhay/address/api/RetrofitClient.kt" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/abhay/address/api/RetrofitClient.kt" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/abhay/address/controllers/display/AddressListFragment.kt" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/abhay/address/controllers/display/AddressListFragment.kt" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/abhay/address/models/Address.kt" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/abhay/address/models/Address.kt" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/abhay/address/viewhelpers/AddressAdapter.kt" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/abhay/address/viewhelpers/AddressAdapter.kt" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_display_address.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_display_address.xml" />
@@ -109,8 +99,18 @@
       <file leaf-file-name="AddressListFragment.kt" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/abhay/address/controllers/display/AddressListFragment.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="457">
-              <caret line="236" column="8" lean-forward="false" selection-start-line="236" selection-start-column="8" selection-end-line="236" selection-end-column="8" />
+            <state relative-caret-position="285">
+              <caret line="161" column="39" lean-forward="false" selection-start-line="161" selection-start-column="39" selection-end-line="161" selection-end-column="39" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AddressListDisplayActivity.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/abhay/address/controllers/display/AddressListDisplayActivity.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -2281,18 +2281,18 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/abhay/address/models/Address.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/abhay/address/api/RetrofitClient.kt" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_add_or_edit_address.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/abhay/address/models/ErrorReply.kt" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/toolbar.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/abhay/address/controllers/display/AddressListDisplayActivity.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/abhay/address/viewhelpers/AddressAdapter.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/abhay/address/controllers/display/EmptyAddressFragment.kt" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/abhay/address/controllers/splash/SplashScreen.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/abhay/address/controllers/change/AddOrEditAddressActivity.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/abhay/address/controllers/display/AddressListDisplayActivity.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/abhay/address/controllers/display/AddressListFragment.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
       </list>
     </option>
   </component>
@@ -2615,18 +2615,19 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1301" height="772" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4852255" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4852255" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24940239" sideWeight="0.5054432" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.592535" sideWeight="0.50278884" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14930016" sideWeight="0.4876494" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22239502" sideWeight="0.49083665" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.11975116" sideWeight="0.4876494" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15863141" sideWeight="0.49083665" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41524106" sideWeight="0.49721116" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24940239" sideWeight="0.49455675" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -2690,7 +2691,8 @@
     <MESSAGE value="improved architecture, removed commented code, improved fragments" />
     <MESSAGE value="improved architecture, removed commented code, improved fragments, and some optimization" />
     <MESSAGE value="renamed class DisplayAddressFragment to AddressListFragment" />
-    <option name="LAST_COMMIT_MESSAGE" value="renamed class DisplayAddressFragment to AddressListFragment" />
+    <MESSAGE value="removed warnings" />
+    <option name="LAST_COMMIT_MESSAGE" value="removed warnings" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -3041,14 +3043,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="34" column="12" lean-forward="true" selection-start-line="34" selection-start-column="12" selection-end-line="34" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/abhay/address/viewhelpers/AddressAdapter.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="336">
@@ -3065,16 +3059,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/abhay/address/controllers/display/AddressListDisplayActivity.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="586">
-          <caret line="99" column="0" lean-forward="false" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
-          <folding>
-            <element signature="e#55#502#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/abhay/address/models/Address.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
@@ -3083,10 +3067,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/abhay/address/controllers/display/AddressListDisplayActivity.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" column="67" lean-forward="false" selection-start-line="28" selection-start-column="67" selection-end-line="28" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/abhay/address/controllers/display/AddressListFragment.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="457">
-          <caret line="236" column="8" lean-forward="false" selection-start-line="236" selection-start-column="8" selection-end-line="236" selection-end-column="8" />
+        <state relative-caret-position="285">
+          <caret line="161" column="39" lean-forward="false" selection-start-line="161" selection-start-column="39" selection-end-line="161" selection-end-column="39" />
           <folding />
         </state>
       </provider>

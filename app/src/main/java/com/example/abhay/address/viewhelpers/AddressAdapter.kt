@@ -51,9 +51,9 @@ class AddressAdapter(private val list: MutableList<Address>, private val listFra
     }
 
     class AddressHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val textView = view.findViewById<TextView>(R.id.address_detail)
-        val checkBox = view.findViewById<CheckBox>(R.id.default_address_indicator)
-        val imageView = view.findViewById<ImageView>(R.id.menu_icon)
+        val textView: TextView = view.findViewById(R.id.address_detail)
+        val checkBox: CheckBox = view.findViewById(R.id.default_address_indicator)
+        val imageView: ImageView = view.findViewById(R.id.menu_icon)
     }
 
     /**
