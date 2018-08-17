@@ -150,16 +150,16 @@ class AddressListFragment : Fragment(), AddressAdapter.ShowPopupCallback {
     private fun deleteAddress(address: Address, position: Int) {
 
         val builder = AlertDialog.Builder(activity)
-        builder.setMessage("Do you really want to delete this address?")
-                .setTitle("Alert!!!")
+        builder.setMessage(getString(R.string.delete_address_alert_dialog_message))
+                .setTitle(getString(R.string.delete_address_alert_dialog_title))
                 .setCancelable(true)
-                .setPositiveButton("Yes") { dialogInterface, _ ->
+                .setPositiveButton(getString(R.string.delete_address_alert_dialog_pos_button)) { dialogInterface, _ ->
                     Log.d(position.toString(), "delete request at")
                     sendDeleteRequest(address.id!!, position)
 
                     dialogInterface.cancel()
 
-                }.setNegativeButton("No") { dialogInterface, _ ->
+                }.setNegativeButton(getString(R.string.delete_address_alert_dialog_neg_button)) { dialogInterface, _ ->
                     dialogInterface.cancel()
                 }
         val dialog = builder.create()
@@ -192,14 +192,14 @@ class AddressListFragment : Fragment(), AddressAdapter.ShowPopupCallback {
                 } else {
                     val error = Gson().fromJson(response?.errorBody()?.string(), DeleteActionReply::class.java)
                     Toast.makeText(activity, error.errors
-                            ?: "Problem in deletion", Toast.LENGTH_LONG).show()
+                            ?: getString(R.string.retrofit_delete_action_default_failure_message), Toast.LENGTH_LONG).show()
                 }
                 holder.imageView.isClickable = true
                 activity?.findViewById<ProgressBar>(R.id.progressBar)?.visibility = View.GONE
             }
 
             override fun onFailure(call: Call<DeleteActionReply>?, t: Throwable?) {
-                Toast.makeText(activity, "Error occurred", Toast.LENGTH_LONG).show()
+                Toast.makeText(activity, getString(R.string.retrofit_default_failure_message), Toast.LENGTH_LONG).show()
                 holder.imageView.isClickable = true
                 activity?.findViewById<ProgressBar>(R.id.progressBar)?.visibility = View.GONE
             }

@@ -97,7 +97,7 @@ class AddressListDisplayActivity : AppCompatActivity(), AddressListFragment.Empt
             }
 
             override fun onFailure(call: Call<Array<Address>>?, t: Throwable?) {
-                Toast.makeText(this@AddressListDisplayActivity, "error occcurred", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@AddressListDisplayActivity, getString(R.string.retrofit_default_failure_message), Toast.LENGTH_SHORT).show()
             }
         })
     }

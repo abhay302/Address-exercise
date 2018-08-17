@@ -170,15 +170,15 @@ class AddOrEditAddressActivity : AppCompatActivity() {
                         val error = Gson().fromJson(response.errorBody()?.string(), ErrorReply::class.java)
                         setErrorFields(error.errors)
                     }
-                    404 -> Toast.makeText(this@AddOrEditAddressActivity, "Address not found", Toast.LENGTH_SHORT).show()
-                    else -> Toast.makeText(this@AddOrEditAddressActivity, "Error occurred", Toast.LENGTH_SHORT).show()
+                    404 -> Toast.makeText(this@AddOrEditAddressActivity, getString(R.string.retrofit_default_error404_message), Toast.LENGTH_SHORT).show()
+                    else -> Toast.makeText(this@AddOrEditAddressActivity, getString(R.string.retrofit_error_message), Toast.LENGTH_SHORT).show()
                 }
                 findViewById<ProgressBar>(R.id.progressBar).visibility = View.GONE
                 findViewById<ImageButton>(R.id.send_button).isClickable = true
             }
 
             override fun onFailure(call: Call<JsonElement>?, t: Throwable?) {
-                Toast.makeText(this@AddOrEditAddressActivity, "Error occurred", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@AddOrEditAddressActivity, getString(R.string.retrofit_default_failure_message), Toast.LENGTH_SHORT).show()
                 findViewById<ProgressBar>(R.id.progressBar).visibility = View.GONE
                 findViewById<ImageButton>(R.id.send_button).isClickable = true
             }

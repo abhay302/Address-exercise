@@ -27,4 +27,16 @@
 
     <string name="menu_item_edit_address">Edit address</string>
     <string name="menu_item_remove_address">Remove address</string>
+
+
+    <string name="delete_address_alert_dialog_title">Alert!!!</string>
+    <string name="delete_address_alert_dialog_message">Do you really want to delete this address?</string>
+    <string name="delete_address_alert_dialog_pos_button">Yes</string>
+    <string name="delete_address_alert_dialog_neg_button">No</string>
+
+
+    <string name="retrofit_default_failure_message">error occurred</string>
+    <string name="retrofit_error_message">error occurred</string>
+    <string name="retrofit_delete_action_default_failure_message">Problem in deletion</string>
+    <string name="retrofit_default_error404_message">Address not found</string>
 </resources>
